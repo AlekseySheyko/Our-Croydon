@@ -14,7 +14,7 @@
         android:gravity="center_horizontal"
         android:textColor="#4c4e52"
         android:layout_marginTop="16dp"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -44,16 +44,19 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="8dp"
         android:hint="Password"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign in"
+        android:minHeight="56dp"
         android:background="#37b501"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
+        android:textSize="16sp"
         android:onClick="signIn"/>
 
     <FrameLayout
@@ -66,7 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"/>
 
     </FrameLayout>
 

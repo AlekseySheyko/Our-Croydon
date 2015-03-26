@@ -1,13 +1,17 @@
 package com.lbcinternal.sensemble.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.lbcinternal.sensemble.DetailActivity;
 import com.lbcinternal.sensemble.FeedListAdapter;
 import com.lbcinternal.sensemble.MainActivity;
 import com.lbcinternal.sensemble.R;
@@ -22,6 +26,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,6 +39,8 @@ import retrofit.client.Response;
 
 public class NewsFragment extends Fragment {
 
+    private List<FeedEntry> mEntries;
+
     public NewsFragment() {
     }
 
@@ -42,12 +49,13 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_no_tabs, container, false);
 
-        final ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
+        final ListView feedListView = (ListView)
+                rootView.findViewById(R.id.list_view);
 
         ApiService service = new RestClient().getApiService();
         service.getNews(new ResponseCallback() {
             @Override public void success(Response response) {
-                List<FeedEntry> entries = new ArrayList<>();
+                mEntries = new ArrayList<>();
 
                 String sampleXml = null;
                 try {
@@ -78,15 +86,33 @@ public class NewsFragment extends Fragment {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        entries.add(new FeedEntry(title, body, date));
+                        mEntries.add(new FeedEntry(title, body, date));
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                feedListView.setAdapter(new FeedListAdapter(getActivity(),
-                        entries));
+                if (getActivity() != null) {
+                    feedListView.setAdapter(new FeedListAdapter(getActivity(),
+                            mEntries));
+                    feedListView.setOnItemClickListener(new OnItemClickListener() {
+                        @Override public void onItemClick(AdapterView<?> parent, View view,
+                                                          int position, long id) {
+                            Date creationDate = mEntries.get(position).getCreationDate();
+                            DateFormat format = new SimpleDateFormat("F MMM");
+                            String date = format.format(creationDate);
+                            String title = mEntries.get(position).getTitle();
+                            String body = mEntries.get(position).getBody();
+
+                            Intent intent = new Intent(getActivity(), DetailActivity.class);
+                            intent.putExtra("title", title);
+                            intent.putExtra("date", date);
+                            intent.putExtra("body", body);
+                            startActivity(intent);
+                        }
+                    });
+                }
             }
 
             @Override public void failure(RetrofitError error) {
