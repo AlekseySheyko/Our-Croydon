@@ -1,0 +1,76 @@
+package com.lbcinternal.sensemble.fragments;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.lbcinternal.sensemble.R;
+import com.lbcinternal.sensemble.views.SlidingTabLayout;
+
+public class IdeasFragment extends Fragment {
+
+    public IdeasFragment() {
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_tabs, container, false);
+
+        ViewPager pager = (ViewPager) rootView.findViewById(R.id.pager);
+        pager.setAdapter(new PagerAdapter(getFragmentManager()));
+
+        SlidingTabLayout tabBar = (SlidingTabLayout) rootView.findViewById(R.id.sliding_tabs);
+        tabBar.setDistributeEvenly(true);
+        tabBar.setViewPager(pager);
+        tabBar.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+            @Override
+            public int getIndicatorColor(int position) {
+                return getResources().getColor(R.color.tab_indicator);
+            }
+        });
+
+        return rootView;
+    }
+
+    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getActivity().getActionBar().setTitle("Ideas");
+    }
+
+    private class PagerAdapter extends FragmentPagerAdapter {
+
+        private static final int NUM_ITEMS = 2;
+        private String[] mTabTitles;
+
+        public PagerAdapter(FragmentManager fm) {
+            super(fm);
+
+            mTabTitles = new String[] {
+                    "Most recent",
+                    "Highest rated"
+            };
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return new IdeasFragment();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTabTitles[position];
+        }
+    }
+}
