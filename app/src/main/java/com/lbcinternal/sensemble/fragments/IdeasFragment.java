@@ -9,9 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import com.lbcinternal.sensemble.FeedListAdapter;
 import com.lbcinternal.sensemble.MainActivity;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.views.SlidingTabLayout;
@@ -38,9 +36,6 @@ public class IdeasFragment extends Fragment {
                 return getResources().getColor(R.color.tab_indicator);
             }
         });
-
-        ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
-        feedListView.setAdapter(new FeedListAdapter(this));
 
         return rootView;
     }

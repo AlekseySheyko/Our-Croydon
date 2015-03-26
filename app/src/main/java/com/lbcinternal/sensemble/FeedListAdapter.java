@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.lbcinternal.sensemble.views.FeedEntry;
+import com.lbcinternal.sensemble.rest.FeedEntry;
 
 import java.util.List;
 
