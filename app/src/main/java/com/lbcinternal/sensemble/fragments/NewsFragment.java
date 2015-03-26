@@ -13,10 +13,19 @@ import com.lbcinternal.sensemble.MainActivity;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.FeedEntry;
-import com.lbcinternal.sensemble.rest.FeedXmlParser;
 import com.lbcinternal.sensemble.rest.RestClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit.ResponseCallback;
@@ -38,14 +47,44 @@ public class NewsFragment extends Fragment {
         ApiService service = new RestClient().getApiService();
         service.getNews(new ResponseCallback() {
             @Override public void success(Response response) {
-                List<FeedEntry> entries = null;
+                List<FeedEntry> entries = new ArrayList<>();
+
+                String sampleXml = null;
                 try {
-                    InputStream in = response.getBody().in();
-                    FeedXmlParser feedXmlParser = new FeedXmlParser();
-                    entries = feedXmlParser.parse(in);
+                    InputStream inputStream = response.getBody().in();
+
+                    BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder in = new StringBuilder();
+                    String line;
+                    while ((line = r.readLine()) != null) {
+                        in.append(line);
+                    }
+                    sampleXml = in.toString();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                try {
+                    JSONArray entriesArray = new JSONArray(sampleXml);
+                    for (int i = 0; i < entriesArray.length(); i++) {
+                        JSONObject entry = entriesArray.getJSONObject(i);
+
+                        String title = entry.getString("Title");
+                        String body = entry.getString("Story");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                        Date date = null;
+                        try {
+                            date = format.parse(entry.getString("DatePublished"));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        entries.add(new FeedEntry(title, body, date));
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 feedListView.setAdapter(new FeedListAdapter(getActivity(),
                         entries));
             }
