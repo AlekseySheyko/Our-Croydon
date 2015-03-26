@@ -9,4 +9,7 @@ public interface ApiService {
     @GET("/api/news/getall") void getNews (
             Callback<Response> callback);
 
+    @GET("/api/offers/getall") void getOffers (
+            Callback<Response> callback);
+
 }
