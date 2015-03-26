@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lbcinternal.sensemble.MainActivity;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.views.SlidingTabLayout;
 
@@ -42,7 +43,8 @@ public class OffersFragment extends Fragment {
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getActivity().getActionBar().setTitle("Offers");
+        ((MainActivity) getActivity())
+                .getSupportActionBar().setTitle("Offers");
     }
 
     private class PagerAdapter extends FragmentPagerAdapter {
