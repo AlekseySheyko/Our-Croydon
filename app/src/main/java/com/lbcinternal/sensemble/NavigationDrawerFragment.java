@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.lbcinternal.sensemble.fragments.IdeasFragment;
 import com.lbcinternal.sensemble.fragments.NewsFragment;
@@ -34,7 +34,12 @@ public class NavigationDrawerFragment extends Fragment {
         drawerList.setOnItemClickListener(new OnItemClickListener() {
             @Override public void onItemClick(AdapterView<?> parent, View view,
                                               int position, long id) {
-                selectItem(position);
+                if (position <= 2) {
+                    selectItem(position);
+                } else {
+                    Toast.makeText(getActivity(), "Coming soon",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
