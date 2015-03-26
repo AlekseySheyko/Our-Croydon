@@ -30,11 +30,7 @@ public class NavigationDrawerFragment extends Fragment {
 
         ListView drawerList = (ListView) rootView.findViewById(
                 R.id.drawer_list);
-        drawerList.setAdapter(new ArrayAdapter<>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                new String[]{"News", "Offers and events", "Shape Croygon"}
-        ));
+        drawerList.setAdapter(new NavigationDrawerAdapter(getActivity()));
         drawerList.setOnItemClickListener(new OnItemClickListener() {
             @Override public void onItemClick(AdapterView<?> parent, View view,
                                               int position, long id) {

@@ -56,8 +56,8 @@ public class OffersFragment extends Fragment {
             super(fm);
 
             mTabTitles = new String[] {
-                    "Most recent",
-                    "Ending soon"
+                    "Most recent".toUpperCase(),
+                    "Ending soon".toUpperCase()
             };
         }
 

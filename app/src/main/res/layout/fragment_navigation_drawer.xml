@@ -7,12 +7,43 @@
     android:background="@android:color/white"
     tools:context=".NavigationDrawerFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:background="#eee"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/avatar_sample"/>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Hayley Lewis"
+            android:textColor="#626669"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
     <ListView
         android:id="@+id/drawer_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"/>
+        android:dividerHeight="0dp"
+        android:layout_marginTop="8dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#e1e1e1"/>
 
 </LinearLayout>
