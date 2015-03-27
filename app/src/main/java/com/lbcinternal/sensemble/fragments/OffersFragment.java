@@ -123,6 +123,7 @@ public class OffersFragment extends Fragment {
                             String body = mEntries.get(position).getBody();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);
+                            intent.putExtra("section", "offers");
                             intent.putExtra("title", title);
                             intent.putExtra("date", date);
                             intent.putExtra("body", body);

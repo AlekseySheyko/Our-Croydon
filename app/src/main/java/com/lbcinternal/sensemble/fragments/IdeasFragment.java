@@ -122,6 +122,7 @@ public class IdeasFragment extends Fragment {
                             String body = mEntries.get(position).getBody();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);
+                            intent.putExtra("section", "ideas");
                             intent.putExtra("title", title);
                             intent.putExtra("date", date);
                             intent.putExtra("body", body);
