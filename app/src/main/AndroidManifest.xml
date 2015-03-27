@@ -42,8 +42,14 @@
         </activity>
         <activity
             android:name=".AddCommentActivity"
-            android:label="@string/title_activity_add_comment" >
+            android:label="@string/title_activity_add_comment"
+            android:parentActivityName=".CommentsActivity"
+            android:theme="@style/AppTheme.Login"
+            android:windowSoftInputMode="stateAlwaysVisible" >
         </activity>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.lbcinternal.sensemble.CommentsActivity" />
     </application>
 
 </manifest>
