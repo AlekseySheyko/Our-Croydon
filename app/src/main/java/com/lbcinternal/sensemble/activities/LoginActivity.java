@@ -1,9 +1,11 @@
-package com.lbcinternal.sensemble;
+package com.lbcinternal.sensemble.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+
+import com.lbcinternal.sensemble.R;
 
 
 public class LoginActivity extends ActionBarActivity {

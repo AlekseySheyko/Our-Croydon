@@ -1,4 +1,4 @@
-package com.lbcinternal.sensemble;
+package com.lbcinternal.sensemble.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.lbcinternal.sensemble.R;
 
 
 public class AddCommentActivity extends ActionBarActivity {

@@ -1,10 +1,14 @@
-package com.lbcinternal.sensemble;
+package com.lbcinternal.sensemble.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.lbcinternal.sensemble.R;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -14,14 +18,17 @@ public class DetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_news);
 
-        String section = getIntent().getStringExtra("section");
+        SharedPreferences sp = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+        String section = sp.getString("section", "");
         if (section.equals("ideas")) {
             findViewById(R.id.feedback_container).setVisibility(View.VISIBLE);
         }
 
-        String title = getIntent().getStringExtra("title");
-        String date = getIntent().getStringExtra("date");
-        String body = getIntent().getStringExtra("body");
+        String title = sp.getString("title", "");
+        String date = sp.getString("date", "");
+        String body = sp.getString("body", "");
 
         TextView titleTextView = (TextView) findViewById(R.id.title);
         titleTextView.setText(title);

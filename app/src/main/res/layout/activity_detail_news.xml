@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context="com.lbcinternal.sensemble.DetailActivity">
+              tools:context="com.lbcinternal.sensemble.activities.DetailActivity">
 
     <include layout="@layout/feed_entry_title"/>
 

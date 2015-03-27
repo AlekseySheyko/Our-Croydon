@@ -1,4 +1,4 @@
-package com.lbcinternal.sensemble;
+package com.lbcinternal.sensemble.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,9 +15,9 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.lbcinternal.sensemble.fragments.IdeasFragment;
-import com.lbcinternal.sensemble.fragments.NewsFragment;
-import com.lbcinternal.sensemble.fragments.OffersFragment;
+import com.lbcinternal.sensemble.activities.MainActivity;
+import com.lbcinternal.sensemble.adapters.NavigationDrawerAdapter;
+import com.lbcinternal.sensemble.R;
 
 
 public class NavigationDrawerFragment extends Fragment {

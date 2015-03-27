@@ -1,7 +1,9 @@
 package com.lbcinternal.sensemble.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,9 +16,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.lbcinternal.sensemble.DetailActivity;
-import com.lbcinternal.sensemble.FeedListAdapter;
-import com.lbcinternal.sensemble.MainActivity;
+import com.lbcinternal.sensemble.activities.DetailActivity;
+import com.lbcinternal.sensemble.adapters.FeedListAdapter;
+import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.FeedEntry;
@@ -121,11 +123,15 @@ public class IdeasFragment extends Fragment {
                             String title = mEntries.get(position).getTitle();
                             String body = mEntries.get(position).getBody();
 
+                            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                            sp.edit()
+                                    .putString("section", "ideas")
+                                    .putString("title", title)
+                                    .putString("date", date)
+                                    .putString("body", body)
+                                    .apply();
+
                             Intent intent = new Intent(getActivity(), DetailActivity.class);
-                            intent.putExtra("section", "ideas");
-                            intent.putExtra("title", title);
-                            intent.putExtra("date", date);
-                            intent.putExtra("body", body);
                             startActivity(intent);
                         }
                     });
@@ -154,7 +160,7 @@ public class IdeasFragment extends Fragment {
         public PagerAdapter(FragmentManager fm) {
             super(fm);
 
-            mTabTitles = new String[] {
+            mTabTitles = new String[]{
                     "Most recent".toUpperCase(),
                     "Highest rated".toUpperCase()
             };

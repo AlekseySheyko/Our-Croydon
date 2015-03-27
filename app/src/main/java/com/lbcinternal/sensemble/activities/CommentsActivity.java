@@ -1,4 +1,4 @@
-package com.lbcinternal.sensemble;
+package com.lbcinternal.sensemble.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.lbcinternal.sensemble.R;
 import com.melnykov.fab.FloatingActionButton;
 
 

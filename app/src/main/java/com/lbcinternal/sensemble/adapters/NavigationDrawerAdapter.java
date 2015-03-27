@@ -1,4 +1,4 @@
-package com.lbcinternal.sensemble;
+package com.lbcinternal.sensemble.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.lbcinternal.sensemble.R;
+
 public class NavigationDrawerAdapter extends ArrayAdapter<String> {
 
     public NavigationDrawerAdapter(Context context) {
         super(context, 0, new String[]{
-                "News", "Offers and events", "Shape Croygon",
+                "News", "Offers and events", "Shape Croydon",
                 "Settings", "Help"});
     }
 

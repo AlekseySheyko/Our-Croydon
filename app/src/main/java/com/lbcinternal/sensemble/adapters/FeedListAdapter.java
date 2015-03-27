@@ -1,4 +1,4 @@
-package com.lbcinternal.sensemble;
+package com.lbcinternal.sensemble.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.FeedEntry;
 
 import java.text.DateFormat;
