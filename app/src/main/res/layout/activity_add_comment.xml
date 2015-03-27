@@ -8,5 +8,6 @@
           android:hint="Write a message..."
           android:gravity="top"
           android:imeOptions="actionSend"
+          android:id="@+id/field"
           android:inputType="textNoSuggestions|textCapSentences"
     />
