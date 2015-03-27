@@ -6,7 +6,11 @@
         <item name="android:windowBackground">@color/background</item>
     </style>
 
-    <style name="AppTheme.Login" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.Login" parent="@android:style/Theme.Holo.Light.NoActionBar">
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="AppTheme.ActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="android:windowBackground">@color/background</item>

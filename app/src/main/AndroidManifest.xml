@@ -44,7 +44,7 @@
             android:name=".activities.AddCommentActivity"
             android:label="@string/title_activity_add_comment"
             android:parentActivityName=".activities.CommentsActivity"
-            android:theme="@style/AppTheme.Login"
+            android:theme="@style/AppTheme.ActionBar"
             android:windowSoftInputMode="stateAlwaysVisible" >
         </activity>
         <meta-data

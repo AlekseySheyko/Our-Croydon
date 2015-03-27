@@ -16,7 +16,7 @@ public class DetailActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_news);
+        setContentView(R.layout.activity_details);
 
         SharedPreferences sp = PreferenceManager
                 .getDefaultSharedPreferences(this);
