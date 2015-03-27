@@ -9,4 +9,5 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_comments">Comments</string>
     <string name="sample_message">This is the sample message that crosses over in two lines and goes on for a while.</string>
+    <string name="title_activity_add_comment">AddCommentActivity</string>
 </resources>
