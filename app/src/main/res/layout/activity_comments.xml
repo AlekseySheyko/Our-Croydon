@@ -1,135 +1,141 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="com.lbcinternal.sensemble.CommentsActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.lbcinternal.sensemble.CommentsActivity">
 
-    <RelativeLayout
-        style="@style/ContactContainer">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/avatar1"
-            style="@style/ContactAvatar"/>
+        <RelativeLayout
+            style="@style/ContactContainer">
 
-        <TextView
-            android:id="@+id/name1"
-            android:text="Hayley Lewis"
-            style="@style/ContactName"
-            android:layout_alignTop="@+id/avatar1"
-            android:layout_toRightOf="@+id/avatar1"/>
+            <ImageView
+                android:id="@+id/avatar1"
+                style="@style/ContactAvatar"/>
 
-        <TextView
-            android:text="@string/sample_message"
-            style="@style/ContactComment"
-            android:layout_below="@+id/name1"
-            android:layout_toRightOf="@id/avatar1"
-            android:layout_toEndOf="@+id/avatar1"/>
+            <TextView
+                android:id="@+id/name1"
+                android:text="Hayley Lewis"
+                style="@style/ContactName"
+                android:layout_alignTop="@+id/avatar1"
+                android:layout_toRightOf="@+id/avatar1"/>
 
-    </RelativeLayout>
+            <TextView
+                android:text="@string/sample_message"
+                style="@style/ContactComment"
+                android:layout_below="@+id/name1"
+                android:layout_toRightOf="@id/avatar1"
+                android:layout_toEndOf="@+id/avatar1"/>
 
-    <View
-        style="@style/Divider"/>
+        </RelativeLayout>
 
-    <RelativeLayout
-        style="@style/ContactContainer">
+        <View
+            style="@style/Divider"/>
 
-        <ImageView
-            android:id="@+id/avatar2"
-            style="@style/ContactAvatar"/>
+        <RelativeLayout
+            style="@style/ContactContainer">
 
-        <TextView
-            android:id="@+id/name2"
-            android:text="Lizzie Hindle"
-            style="@style/ContactName"
-            android:layout_alignTop="@+id/avatar2"
-            android:layout_toRightOf="@+id/avatar2"/>
+            <ImageView
+                android:id="@+id/avatar2"
+                style="@style/ContactAvatar"/>
 
-        <TextView
-            android:text="@string/sample_message"
-            style="@style/ContactComment"
-            android:layout_below="@+id/name2"
-            android:layout_toRightOf="@id/avatar2"
-            android:layout_toEndOf="@+id/avatar2"/>
+            <TextView
+                android:id="@+id/name2"
+                android:text="Lizzie Hindle"
+                style="@style/ContactName"
+                android:layout_alignTop="@+id/avatar2"
+                android:layout_toRightOf="@+id/avatar2"/>
 
-    </RelativeLayout>
+            <TextView
+                android:text="@string/sample_message"
+                style="@style/ContactComment"
+                android:layout_below="@+id/name2"
+                android:layout_toRightOf="@id/avatar2"
+                android:layout_toEndOf="@+id/avatar2"/>
 
-    <View
-        style="@style/Divider"/>
+        </RelativeLayout>
 
-    <RelativeLayout
-        style="@style/ContactContainer">
+        <View
+            style="@style/Divider"/>
 
-        <ImageView
-            android:id="@+id/avatar3"
-            style="@style/ContactAvatar"/>
+        <RelativeLayout
+            style="@style/ContactContainer">
 
-        <TextView
-            android:id="@+id/name3"
-            android:text="Graham Cadle"
-            style="@style/ContactName"
-            android:layout_alignTop="@+id/avatar3"
-            android:layout_toRightOf="@+id/avatar3"/>
+            <ImageView
+                android:id="@+id/avatar3"
+                style="@style/ContactAvatar"/>
 
-        <TextView
-            android:text="@string/sample_message"
-            style="@style/ContactComment"
-            android:layout_below="@+id/name3"
-            android:layout_toRightOf="@id/avatar3"
-            android:layout_toEndOf="@+id/avatar3"/>
+            <TextView
+                android:id="@+id/name3"
+                android:text="Graham Cadle"
+                style="@style/ContactName"
+                android:layout_alignTop="@+id/avatar3"
+                android:layout_toRightOf="@+id/avatar3"/>
 
-    </RelativeLayout>
+            <TextView
+                android:text="@string/sample_message"
+                style="@style/ContactComment"
+                android:layout_below="@+id/name3"
+                android:layout_toRightOf="@id/avatar3"
+                android:layout_toEndOf="@+id/avatar3"/>
 
-    <View
-        style="@style/Divider"/>
+        </RelativeLayout>
 
-    <RelativeLayout
-        style="@style/ContactContainer">
+        <View
+            style="@style/Divider"/>
 
-        <ImageView
-            android:id="@+id/avatar4"
-            style="@style/ContactAvatar"/>
+        <RelativeLayout
+            style="@style/ContactContainer">
 
-        <TextView
-            android:id="@+id/name4"
-            android:text="Harry Singh"
-            style="@style/ContactName"
-            android:layout_alignTop="@+id/avatar4"
-            android:layout_toRightOf="@+id/avatar4"/>
+            <ImageView
+                android:id="@+id/avatar4"
+                style="@style/ContactAvatar"/>
 
-        <TextView
-            android:text="This is a sample message that crosses over multiple lines and goes on for a while. This is a sample message that crosses over multiple lines and goes on for a while."
-            style="@style/ContactComment"
-            android:layout_below="@+id/name4"
-            android:layout_toRightOf="@id/avatar4"
-            android:layout_toEndOf="@+id/avatar4"/>
+            <TextView
+                android:id="@+id/name4"
+                android:text="Harry Singh"
+                style="@style/ContactName"
+                android:layout_alignTop="@+id/avatar4"
+                android:layout_toRightOf="@+id/avatar4"/>
 
-    </RelativeLayout>
+            <TextView
+                android:text="This is a sample message that crosses over multiple lines and goes on for a while. This is a sample message that crosses over multiple lines and goes on for a while."
+                style="@style/ContactComment"
+                android:layout_below="@+id/name4"
+                android:layout_toRightOf="@id/avatar4"
+                android:layout_toEndOf="@+id/avatar4"/>
 
-    <View
-        style="@style/Divider"/>
+        </RelativeLayout>
 
-    <RelativeLayout
-        style="@style/ContactContainer">
+        <View
+            style="@style/Divider"/>
 
-        <ImageView
-            android:id="@+id/avatar5"
-            style="@style/ContactAvatar"/>
+        <RelativeLayout
+            style="@style/ContactContainer">
 
-        <TextView
-            android:id="@+id/name5"
-            android:text="John Smith"
-            style="@style/ContactName"
-            android:layout_alignTop="@+id/avatar5"
-            android:layout_toRightOf="@+id/avatar5"/>
+            <ImageView
+                android:id="@+id/avatar5"
+                style="@style/ContactAvatar"/>
 
-        <TextView
-            android:text="@string/sample_message"
-            style="@style/ContactComment"
-            android:layout_below="@+id/name5"
-            android:layout_toRightOf="@id/avatar5"
-            android:layout_toEndOf="@+id/avatar5"/>
+            <TextView
+                android:id="@+id/name5"
+                android:text="John Smith"
+                style="@style/ContactName"
+                android:layout_alignTop="@+id/avatar5"
+                android:layout_toRightOf="@+id/avatar5"/>
 
-    </RelativeLayout>
+            <TextView
+                android:text="@string/sample_message"
+                style="@style/ContactComment"
+                android:layout_below="@+id/name5"
+                android:layout_toRightOf="@id/avatar5"
+                android:layout_toEndOf="@+id/avatar5"/>
 
-</LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
