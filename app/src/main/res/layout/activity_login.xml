@@ -79,15 +79,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:text="Remember me"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+        <TextView
+            android:text="Remember me:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="#ab000000"
             android:textSize="14sp"/>
+
+            <ToggleButton
+                android:id="@+id/remember_toggle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/toggle_selector"
+                android:text=""
+                android:textOn=""
+                android:textOff=""/>
+
+        </LinearLayout>
 
     </FrameLayout>
 
