@@ -5,8 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 import com.lbcinternal.sensemble.R;
+import com.lbcinternal.sensemble.rest.ApiService;
+import com.lbcinternal.sensemble.rest.CroydonClient;
+
+import retrofit.ResponseCallback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class LoginActivity extends Activity {
@@ -19,6 +26,24 @@ public class LoginActivity extends Activity {
     }
 
     public void signIn(View view) {
+        String username = ((EditText) findViewById(R.id.usernameField)).getText().toString();
+        String password = ((EditText) findViewById(R.id.passwordField)).getText().toString();
+
+        ApiService service = new CroydonClient().getApiService();
+        service.login(username, password, new ResponseCallback() {
+            @Override public void success(Response response) {
+
+            }
+
+            @Override public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
+
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void createAccount(View view) {
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 }

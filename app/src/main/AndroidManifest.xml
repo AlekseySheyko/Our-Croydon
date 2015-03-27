@@ -47,9 +47,19 @@
             android:theme="@style/AppTheme.ActionBar"
             android:windowSoftInputMode="stateAlwaysVisible" >
         </activity>
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".activities.CommentsActivity" />
+
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:label="@string/title_activity_regiter"
+            android:parentActivityName=".activities.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lbcinternal.sensemble.activities.LoginActivity" />
+        </activity>
     </application>
 
 </manifest>

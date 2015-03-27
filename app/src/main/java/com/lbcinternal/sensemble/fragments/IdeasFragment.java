@@ -22,7 +22,7 @@ import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.FeedEntry;
-import com.lbcinternal.sensemble.rest.RestClient;
+import com.lbcinternal.sensemble.rest.TestClient;
 import com.lbcinternal.sensemble.views.SlidingTabLayout;
 
 import org.json.JSONArray;
@@ -70,7 +70,7 @@ public class IdeasFragment extends Fragment {
 
         final ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
 
-        ApiService service = new RestClient().getApiService();
+        ApiService service = new TestClient().getApiService();
         service.getNews(new ResponseCallback() {
             @Override public void success(Response response) {
                 mEntries = new ArrayList<>();
