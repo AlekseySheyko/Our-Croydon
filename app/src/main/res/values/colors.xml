@@ -5,5 +5,8 @@
     <color name="primary_dark">#2c9000</color>
     <color name="tab_indicator">#ff0068</color>
     <color name="background">@android:color/white</color>
+    <color name="btn_focused">#309f01</color>
+    <color name="btn_pressed">#227001</color>
+    <color name="btn_normal">#37b501</color>
 
 </resources>

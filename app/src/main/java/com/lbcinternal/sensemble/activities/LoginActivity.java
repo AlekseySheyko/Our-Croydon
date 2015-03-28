@@ -43,7 +43,7 @@ public class LoginActivity extends Activity {
                     InputStream is = response.getBody().in();
                     String responseString = convertStreamToString(is);
                     if (responseString.contains("Please log in using your @croydon.gov.uk email address.")) {
-                        Toast.makeText(LoginActivity.this, "Login failed. Check your credentials.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
                     } else {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }

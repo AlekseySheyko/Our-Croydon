@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:text="Sign in"
             android:minHeight="56dp"
-            android:background="#37b501"
+            android:background="@drawable/login_btn_selector"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="14sp"

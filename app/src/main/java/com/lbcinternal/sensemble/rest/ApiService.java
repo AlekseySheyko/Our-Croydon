@@ -14,6 +14,9 @@ public interface ApiService {
     @GET("/api/offers/getall") void getOffers (
             Callback<Response> callback);
 
+    @GET("/Api/Posts/GetList/10/0") void getIdeas (
+            Callback<Response> callback);
+
     @POST("/Account/login.aspx") void login (
             @Query("apiLogin") String username,
             @Query("apiPassword") String password,

@@ -19,6 +19,7 @@ public class WebViewActivity extends ActionBarActivity {
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
         myWebView.setWebViewClient(new MyWebViewClient());
+        myWebView.getSettings().setAppCacheEnabled(true);
         myWebView.getSettings().setRenderPriority(RenderPriority.HIGH);
         myWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
