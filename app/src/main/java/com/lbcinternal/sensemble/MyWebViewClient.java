@@ -33,10 +33,6 @@ public class MyWebViewClient extends WebViewClient {
                     webView.getContext(), MainActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-        } else if (action.equals("logout")) {
-            webView.getContext().startActivity(new Intent(
-                    webView.getContext(), LoginActivity.class)
-                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         }
 
 
@@ -47,7 +43,7 @@ public class MyWebViewClient extends WebViewClient {
         } else {
             webView.loadUrl(url);
         }
-        Log.i("TAG", "Url: " + url);
+        Log.i("TAG", "WebView override URL: " + url);
         return true;
     }
 
@@ -60,6 +56,10 @@ public class MyWebViewClient extends WebViewClient {
                     webView.getContext(), LoginActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        } else if (url.equals("https://lbc-shapecroydon-ci-dev.azurewebsites.net/Account/login.aspx?apiLogoff=true")) {
+            webView.getContext().startActivity(new Intent(
+                    // TODO: Do not return to main activity when pressing back on logging screen after logout
+                    webView.getContext(), LoginActivity.class));
         }
     }
 }

@@ -31,6 +31,15 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_login);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        if (sp.getBoolean("rememberMe", false)
+                && sp.getBoolean("isSuccess", false)
+                && !sp.getString("sessionId", "").isEmpty()) {
+            startActivity(new Intent(this, MainActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        }
     }
 
     public void signIn(View view) {
@@ -61,6 +70,8 @@ public class LoginActivity extends Activity {
                         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(
                                 LoginActivity.this);
                         sp.edit()
+                                .putBoolean("rememberMe", remember)
+                                .putBoolean("isSuccess", user.isSuccess())
                                 .putString("sessionId", user.getSessionId())
                                 .putString("username", user.getUsername())
                                 .putString("email", user.getEmail())
