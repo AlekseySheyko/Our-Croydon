@@ -32,7 +32,7 @@ public class LoginActivity extends Activity {
         String password = ((EditText) findViewById(R.id.passwordField)).getText().toString();
         boolean remember = ((ToggleButton) findViewById(R.id.toggle)).isChecked();
 
-        ApiService service = new CroydonClient().getApiService();
+        ApiService service = new CroydonClient(username, password).getApiService();
         service.login(username, password, remember, new ResponseCallback() {
             @Override public void success(Response response) {
 
