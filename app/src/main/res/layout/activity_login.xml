@@ -47,6 +47,29 @@
             style="@style/Divider"
             android:layout_marginTop="24dp"/>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/usernameField"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:hint="Username"
+            android:singleLine="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/passwordField"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:hint="Password"
+            android:singleLine="true"
+            android:inputType="textPassword"/>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,9 +79,42 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:onClick="login"
+            android:onClick="signIn"
             android:textAllCaps="true"
             android:fontFamily="sans-serif-light"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:text="Remember me:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ab000000"
+                    android:textSize="14sp"/>
+
+                <ToggleButton
+                    android:id="@+id/toggle"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/toggle_selector"
+                    android:checked="true"
+                    android:text=""
+                    android:textOn=""
+                    android:textOff=""/>
+
+            </LinearLayout>
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

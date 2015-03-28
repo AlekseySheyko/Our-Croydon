@@ -55,9 +55,9 @@ public class MyWebViewClient extends WebViewClient {
         super.onPageFinished(webView, url);
         webView.setVisibility(View.VISIBLE);
 
-        if (url.equals("https://lbc-shapecroydon-ci-dev.azurewebsites.net/")) {
+        if (url.equals("https://www.shapecroydon.org/Account/login.aspx?apiLogoff=true")) {
             webView.getContext().startActivity(new Intent(
-                    webView.getContext(), MainActivity.class)
+                    webView.getContext(), LoginActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         }

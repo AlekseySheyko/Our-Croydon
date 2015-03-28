@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.lbcinternal.sensemble.R;
-import com.lbcinternal.sensemble.rest.FeedEntry;
+import com.lbcinternal.sensemble.rest.model.FeedEntry;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

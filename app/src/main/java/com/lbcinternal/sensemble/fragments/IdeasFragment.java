@@ -16,13 +16,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.lbcinternal.sensemble.activities.DetailActivity;
-import com.lbcinternal.sensemble.adapters.FeedListAdapter;
-import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.R;
+import com.lbcinternal.sensemble.activities.DetailActivity;
+import com.lbcinternal.sensemble.activities.MainActivity;
+import com.lbcinternal.sensemble.adapters.FeedListAdapter;
 import com.lbcinternal.sensemble.rest.ApiService;
-import com.lbcinternal.sensemble.rest.FeedEntry;
-import com.lbcinternal.sensemble.rest.TestClient;
+import com.lbcinternal.sensemble.rest.CroydonClient;
+import com.lbcinternal.sensemble.rest.model.FeedEntry;
 import com.lbcinternal.sensemble.views.SlidingTabLayout;
 
 import org.json.JSONArray;
@@ -70,8 +70,8 @@ public class IdeasFragment extends Fragment {
 
         final ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
 
-        ApiService service = new TestClient().getApiService();
-        service.getNews(new ResponseCallback() {
+        ApiService service = new CroydonClient().getApiService();
+        service.getIdeas(new ResponseCallback() {
             @Override public void success(Response response) {
                 mEntries = new ArrayList<>();
 

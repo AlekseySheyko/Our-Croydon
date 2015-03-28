@@ -22,7 +22,7 @@ import com.lbcinternal.sensemble.adapters.FeedListAdapter;
 import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
-import com.lbcinternal.sensemble.rest.FeedEntry;
+import com.lbcinternal.sensemble.rest.model.FeedEntry;
 import com.lbcinternal.sensemble.rest.TestClient;
 import com.lbcinternal.sensemble.views.SlidingTabLayout;
 
