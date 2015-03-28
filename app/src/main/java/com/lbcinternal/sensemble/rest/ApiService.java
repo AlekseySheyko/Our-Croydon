@@ -16,6 +16,7 @@ public interface ApiService {
     @GET("/Account/login.aspx") void login (
             @Query("apiLogin") String username,
             @Query("apiPassword") String password,
+            @Query("rememberMe") boolean remember,
             Callback<Response> callback);
 
 }

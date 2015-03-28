@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ToggleButton;
 
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
@@ -29,9 +30,10 @@ public class LoginActivity extends Activity {
     public void signIn(View view) {
         String username = ((EditText) findViewById(R.id.usernameField)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordField)).getText().toString();
+        boolean remember = ((ToggleButton) findViewById(R.id.toggle)).isChecked();
 
         ApiService service = new CroydonClient().getApiService();
-        service.login(username, password, new ResponseCallback() {
+        service.login(username, password, remember, new ResponseCallback() {
             @Override public void success(Response response) {
 
             }
