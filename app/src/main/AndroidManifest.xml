@@ -56,7 +56,8 @@
             android:name=".activities.WebViewActivity"
             android:noHistory="true"
             android:parentActivityName=".activities.LoginActivity"
-            android:hardwareAccelerated="true">
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lbcinternal.sensemble.activities.LoginActivity" />

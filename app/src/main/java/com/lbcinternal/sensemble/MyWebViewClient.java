@@ -9,6 +9,7 @@ import android.webkit.WebViewClient;
 
 import com.lbcinternal.sensemble.activities.CheckEmailActivity;
 import com.lbcinternal.sensemble.activities.LoginActivity;
+import com.lbcinternal.sensemble.activities.MainActivity;
 
 public class MyWebViewClient extends WebViewClient {
     @Override
@@ -25,6 +26,12 @@ public class MyWebViewClient extends WebViewClient {
                 url.equals("https://www.shapecroydon.org/Account/login.aspx")) {
             webView.getContext().startActivity(new Intent(
                     webView.getContext(), LoginActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        } else if (action.equals("login") &&
+                url.equals("https://lbc-shapecroydon-ci-dev.azurewebsites.net/")) {
+            webView.getContext().startActivity(new Intent(
+                    webView.getContext(), MainActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         } else if (action.equals("logout")) {
             webView.getContext().startActivity(new Intent(

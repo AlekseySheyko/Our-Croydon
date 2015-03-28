@@ -26,6 +26,9 @@ public class WebViewActivity extends ActionBarActivity {
         String action = PreferenceManager.getDefaultSharedPreferences(myWebView.getContext())
                 .getString("action", "register");
         switch (action) {
+            case "login":
+                myWebView.loadUrl("https://lbc-shapecroydon-ci-dev.azurewebsites.net/Account/login.aspx?ReturnUrl=%2f");
+                break;
             case "register":
                 myWebView.loadUrl("https://www.shapecroydon.org/Account/register.aspx?ReturnUrl=%2fviewideas.aspx");
                 break;
