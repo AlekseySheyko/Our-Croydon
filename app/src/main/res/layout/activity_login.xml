@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
             android:background="@color/primary"
-            android:textColor="@android:color/white"
+            android:textColor="#e3ffffff"
             android:text="Login"
             android:paddingLeft="72dp"
             android:gravity="center_vertical"

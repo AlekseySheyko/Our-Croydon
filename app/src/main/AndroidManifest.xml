@@ -54,8 +54,17 @@
 
         <activity
             android:name=".activities.RegisterActivity"
-            android:label="@string/title_activity_regiter"
+            android:noHistory="true"
             android:parentActivityName=".activities.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lbcinternal.sensemble.activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".activities.CheckEmailActivity"
+            android:label="@string/title_activity_check_email"
+            android:parentActivityName=".activities.LoginActivity"
+            android:theme="@style/AppTheme.ActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lbcinternal.sensemble.activities.LoginActivity" />
