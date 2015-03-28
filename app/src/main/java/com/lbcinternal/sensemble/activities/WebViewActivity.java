@@ -1,0 +1,36 @@
+package com.lbcinternal.sensemble.activities;
+
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
+import android.webkit.WebSettings;
+import android.webkit.WebSettings.RenderPriority;
+import android.webkit.WebView;
+
+import com.lbcinternal.sensemble.MyWebViewClient;
+import com.lbcinternal.sensemble.R;
+
+public class WebViewActivity extends ActionBarActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+
+        WebView myWebView = (WebView) findViewById(R.id.webview);
+        myWebView.setWebViewClient(new MyWebViewClient());
+        myWebView.getSettings().setRenderPriority(RenderPriority.HIGH);
+        myWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+        String action = PreferenceManager.getDefaultSharedPreferences(myWebView.getContext())
+                .getString("action", "register");
+        switch (action) {
+            case "register":
+                myWebView.loadUrl("https://www.shapecroydon.org/Account/register.aspx?ReturnUrl=%2fviewideas.aspx");
+                break;
+            case "recover":
+                myWebView.loadUrl("https://www.shapecroydon.org/Account/password-retrieval.aspx");
+                break;
+        }
+    }
+}

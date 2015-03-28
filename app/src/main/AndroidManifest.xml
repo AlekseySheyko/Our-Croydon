@@ -53,9 +53,10 @@
             android:value=".activities.CommentsActivity" />
 
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name=".activities.WebViewActivity"
             android:noHistory="true"
-            android:parentActivityName=".activities.LoginActivity" >
+            android:parentActivityName=".activities.LoginActivity"
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lbcinternal.sensemble.activities.LoginActivity" />

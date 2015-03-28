@@ -3,6 +3,7 @@ package com.lbcinternal.sensemble.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -44,6 +45,14 @@ public class LoginActivity extends Activity {
     }
 
     public void createAccount(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, WebViewActivity.class));
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .edit().putString("action", "register").apply();
+    }
+
+    public void recover(View view) {
+        startActivity(new Intent(this, WebViewActivity.class));
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .edit().putString("action", "recover").apply();
     }
 }

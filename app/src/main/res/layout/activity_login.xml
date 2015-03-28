@@ -130,7 +130,8 @@
                 android:layout_marginRight="4dp"
                 android:background="@drawable/login_btn_bg"
                 android:textColor="#333"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:onClick="recover"/>
 
             <Button
                 android:layout_width="0dp"
