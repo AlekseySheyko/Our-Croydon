@@ -27,7 +27,7 @@ public class WebViewActivity extends ActionBarActivity {
                 .getString("action", "register");
         switch (action) {
             case "login":
-                myWebView.loadUrl("https://lbc-shapecroydon-ci-dev.azurewebsites.net/Account/login.aspx?ReturnUrl=%2f");
+                myWebView.loadUrl("https://lbc-shapecroydon-ci-dev.azurewebsites.net");
                 break;
             case "register":
                 myWebView.loadUrl("https://www.shapecroydon.org/Account/register.aspx?ReturnUrl=%2fviewideas.aspx");

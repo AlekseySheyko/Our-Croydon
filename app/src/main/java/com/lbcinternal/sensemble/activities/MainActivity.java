@@ -51,6 +51,9 @@ public class MainActivity extends ActionBarActivity {
             case "ideas":
                 ft.replace(R.id.container, new IdeasFragment());
                 break;
+            default:
+                ft.replace(R.id.container, new NewsFragment());
+                break;
         }
         ft.commit();
     }

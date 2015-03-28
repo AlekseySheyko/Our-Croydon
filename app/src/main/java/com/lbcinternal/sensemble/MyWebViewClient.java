@@ -54,5 +54,12 @@ public class MyWebViewClient extends WebViewClient {
     @Override public void onPageFinished(WebView webView, String url) {
         super.onPageFinished(webView, url);
         webView.setVisibility(View.VISIBLE);
+
+        if (url.equals("https://lbc-shapecroydon-ci-dev.azurewebsites.net/")) {
+            webView.getContext().startActivity(new Intent(
+                    webView.getContext(), MainActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        }
     }
 }
