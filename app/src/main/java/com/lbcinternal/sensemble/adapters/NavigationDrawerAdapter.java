@@ -14,7 +14,7 @@ public class NavigationDrawerAdapter extends ArrayAdapter<String> {
     public NavigationDrawerAdapter(Context context) {
         super(context, 0, new String[]{
                 "News", "Offers and events", "Shape Croydon",
-                "Settings", "Help"});
+                "Settings", "Help", "Log Out"});
     }
 
     @Override public View getView(int position, View convertView, ViewGroup parent) {

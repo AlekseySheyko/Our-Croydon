@@ -21,6 +21,15 @@ public class MyWebViewClient extends WebViewClient {
             webView.getContext().startActivity(new Intent(
                     webView.getContext(), LoginActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        } else if (action.equals("register") &&
+                url.equals("https://www.shapecroydon.org/Account/login.aspx")) {
+            webView.getContext().startActivity(new Intent(
+                    webView.getContext(), LoginActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        } else if (action.equals("logout")) {
+            webView.getContext().startActivity(new Intent(
+                    webView.getContext(), LoginActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         }
 
 

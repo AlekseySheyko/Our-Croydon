@@ -15,7 +15,7 @@ public class WebViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_webview);
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
         myWebView.setWebViewClient(new MyWebViewClient());
@@ -30,6 +30,9 @@ public class WebViewActivity extends ActionBarActivity {
                 break;
             case "recover":
                 myWebView.loadUrl("https://www.shapecroydon.org/Account/password-retrieval.aspx");
+                break;
+            case "logout":
+                myWebView.loadUrl("https://www.shapecroydon.org/Account/login.aspx?apiLogoff=true");
                 break;
         }
     }

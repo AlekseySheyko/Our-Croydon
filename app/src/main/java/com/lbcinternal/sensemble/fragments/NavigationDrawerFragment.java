@@ -1,6 +1,8 @@
 package com.lbcinternal.sensemble.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.lbcinternal.sensemble.activities.MainActivity;
+import com.lbcinternal.sensemble.activities.WebViewActivity;
 import com.lbcinternal.sensemble.adapters.NavigationDrawerAdapter;
 import com.lbcinternal.sensemble.R;
 
@@ -36,6 +39,10 @@ public class NavigationDrawerFragment extends Fragment {
                                               int position, long id) {
                 if (position <= 2) {
                     selectItem(position);
+                } else if (position == 5) {
+                    startActivity(new Intent(getActivity(), WebViewActivity.class));
+                    PreferenceManager.getDefaultSharedPreferences(getActivity())
+                            .edit().putString("action", "logout").apply();
                 } else {
                     Toast.makeText(getActivity(), "Coming soon",
                             Toast.LENGTH_SHORT).show();
