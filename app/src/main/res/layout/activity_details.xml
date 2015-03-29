@@ -96,10 +96,11 @@
                         android:textColor="#3b3d44"/>
 
                     <TextView
+                        android:id="@+id/rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#bcbcbc"
-                        android:text="2 / 5"/>
+                        tools:text="2 / 5"/>
 
                 </LinearLayout>
 

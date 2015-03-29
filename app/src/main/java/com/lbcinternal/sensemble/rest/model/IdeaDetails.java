@@ -10,9 +10,13 @@ public class IdeaDetails {
     @SerializedName("Content")
     String mBody;
 
-    public IdeaDetails(String title, String body) {
+    @SerializedName("Rating")
+    int mRating;
+
+    public IdeaDetails(String title, String body, int rating) {
         mTitle = title;
         mBody = body;
+        mRating = rating;
     }
 
     public String getTitle() {
@@ -21,5 +25,9 @@ public class IdeaDetails {
 
     public String getBody() {
         return mBody;
+    }
+
+    public int getRating() {
+        return mRating;
     }
 }

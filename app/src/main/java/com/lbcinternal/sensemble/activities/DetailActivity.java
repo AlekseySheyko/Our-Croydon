@@ -48,15 +48,19 @@ public class DetailActivity extends ActionBarActivity {
         dateTextView.setText(date);
 
 
-        final TextView bodyTextView = (TextView) findViewById(R.id.body);
         if (!body.isEmpty()) {
+            TextView bodyTextView = (TextView) findViewById(R.id.body);
             bodyTextView.setText(body);
         } else {
             String id = sp.getString("ideaId", "");
             ApiService service = new RestClient().getApiService();
             service.getIdeaDetails(id, new Callback<IdeaDetails>() {
                 @Override public void success(IdeaDetails ideaDetails, Response response) {
+                    TextView bodyTextView = (TextView) findViewById(R.id.body);
                     bodyTextView.setText(ideaDetails.getBody());
+
+                    TextView scoreTextView = (TextView) findViewById(R.id.rating);
+                    scoreTextView.setText(ideaDetails.getRating() + " / 5");
                 }
 
                 @Override public void failure(RetrofitError error) {
