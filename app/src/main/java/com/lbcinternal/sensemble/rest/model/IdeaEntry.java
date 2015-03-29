@@ -4,10 +4,12 @@ import java.util.Date;
 
 public class IdeaEntry {
 
+    int mId;
     String mTitle;
     Date mCreationDate;
 
-    public IdeaEntry(String title, Date creationDate) {
+    public IdeaEntry(int id, String title, Date creationDate) {
+        mId = id;
         mTitle = title;
         mCreationDate = creationDate;
     }
@@ -18,5 +20,9 @@ public class IdeaEntry {
 
     public Date getCreationDate() {
         return mCreationDate;
+    }
+
+    public int getId() {
+        return mId;
     }
 }

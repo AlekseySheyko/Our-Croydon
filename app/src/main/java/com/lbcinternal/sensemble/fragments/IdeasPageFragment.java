@@ -104,6 +104,7 @@ public class IdeasPageFragment extends Fragment {
                     for (int i = 0; i < ideasArray.length(); i++) {
                         JSONObject entry = ideasArray.getJSONObject(i);
 
+                        int id = entry.getInt("Id");
                         String title = entry.getString("Title");
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                         Date date = null;
@@ -112,7 +113,7 @@ public class IdeasPageFragment extends Fragment {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        mEntries.add(new IdeaEntry(title, date));
+                        mEntries.add(new IdeaEntry(id, title, date));
                     }
 
                 } catch (JSONException e) {
@@ -129,11 +130,13 @@ public class IdeasPageFragment extends Fragment {
                             DateFormat format = new SimpleDateFormat("F MMM");
                             String date = format.format(creationDate);
                             String title = mEntries.get(position).getTitle();
+                            int entryId = mEntries.get(position).getId();
 
                             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                             sp.edit()
                                     .putString("section", "ideas")
                                     .putString("title", title)
+                                    .putInt("id", entryId)
                                     .putString("body", "")
                                     .putString("date", date)
                                     .apply();

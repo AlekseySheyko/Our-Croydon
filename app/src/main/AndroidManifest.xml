@@ -3,6 +3,7 @@
     package="com.lbcinternal.sensemble" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".CroydonApp"
@@ -66,7 +67,7 @@
             android:windowSoftInputMode="adjustResize" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lbcinternal.sensemble.activities.LoginActivity" />
+                android:value=".activities.LoginActivity" />
         </activity>
         <activity
             android:name=".activities.CheckEmailActivity"
@@ -75,7 +76,7 @@
             android:theme="@style/AppTheme.ActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lbcinternal.sensemble.activities.LoginActivity" />
+                android:value=".activities.LoginActivity" />
         </activity>
         <activity
             android:name=".activities.SearchResultsActivity"
@@ -93,7 +94,7 @@
                 android:resource="@xml/searchable" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lbcinternal.sensemble.activities.MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
     </application>
 

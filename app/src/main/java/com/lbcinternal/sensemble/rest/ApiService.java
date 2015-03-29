@@ -23,6 +23,8 @@ public interface ApiService {
             @Query("filter") String query,
             Callback<Response> callback);
 
+    @GET("") void getIdeaDetails();
+
     @GET("/Account/login.aspx") void login(
             @Query("apiLogin") String username,
             @Query("apiPassword") String password,

@@ -13,6 +13,8 @@ import com.google.android.gms.analytics.Tracker;
 import com.lbcinternal.sensemble.CroydonApp;
 import com.lbcinternal.sensemble.CroydonApp.TrackerName;
 import com.lbcinternal.sensemble.R;
+import com.lbcinternal.sensemble.rest.ApiService;
+import com.lbcinternal.sensemble.rest.RestClient;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -40,8 +42,12 @@ public class DetailActivity extends ActionBarActivity {
         TextView dateTextView = (TextView) findViewById(R.id.date);
         dateTextView.setText(date);
 
-        TextView bodyTextView = (TextView) findViewById(R.id.body);
-        bodyTextView.setText(body);
+        if (!body.isEmpty()) {
+            TextView bodyTextView = (TextView) findViewById(R.id.body);
+            bodyTextView.setText(body);
+        } else {
+            ApiService service = new RestClient(this).getApiService();
+        }
 
         sendSessionInfo();
     }
