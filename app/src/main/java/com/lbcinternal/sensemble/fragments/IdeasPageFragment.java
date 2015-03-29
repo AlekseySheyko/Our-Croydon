@@ -86,9 +86,9 @@ public class IdeasPageFragment extends Fragment {
                             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                             sp.edit()
                                     .putString("section", "ideas")
-                                    .putString("title", title)
-                                    .putString("id", entryId)
-                                    .putString("date", date)
+                                    .putString("ideaTitle", title)
+                                    .putString("ideaId", entryId)
+                                    .putString("ideaDate", date)
                                     .apply();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);

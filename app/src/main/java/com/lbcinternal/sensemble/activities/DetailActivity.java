@@ -15,6 +15,11 @@ import com.lbcinternal.sensemble.CroydonApp.TrackerName;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.RestClient;
+import com.lbcinternal.sensemble.rest.model.IdeaDetails;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -32,9 +37,9 @@ public class DetailActivity extends ActionBarActivity {
             findViewById(R.id.feedback_container).setVisibility(View.VISIBLE);
         }
 
-        String title = sp.getString("title", "");
-        String date = sp.getString("date", "");
-        String body = sp.getString("body", "");
+        String title = sp.getString("ideaTitle", "");
+        String date = sp.getString("ideaDate", "");
+        String body = sp.getString("ideaBody", "");
 
         TextView titleTextView = (TextView) findViewById(R.id.title);
         titleTextView.setText(title);
@@ -42,12 +47,22 @@ public class DetailActivity extends ActionBarActivity {
         TextView dateTextView = (TextView) findViewById(R.id.date);
         dateTextView.setText(date);
 
+
+        final TextView bodyTextView = (TextView) findViewById(R.id.body);
         if (!body.isEmpty()) {
-            TextView bodyTextView = (TextView) findViewById(R.id.body);
             bodyTextView.setText(body);
         } else {
+            String id = sp.getString("ideaId", "");
             ApiService service = new RestClient().getApiService();
-            // TODO: Get idea details
+            service.getIdeaDetails(id, new Callback<IdeaDetails>() {
+                @Override public void success(IdeaDetails ideaDetails, Response response) {
+                    bodyTextView.setText(ideaDetails.getBody());
+                }
+
+                @Override public void failure(RetrofitError error) {
+                    error.printStackTrace();
+                }
+            });
         }
 
         sendSessionInfo();
