@@ -19,10 +19,10 @@ import android.widget.ListView;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.activities.DetailActivity;
 import com.lbcinternal.sensemble.activities.MainActivity;
-import com.lbcinternal.sensemble.adapters.FeedListAdapter;
+import com.lbcinternal.sensemble.adapters.IdeasAdapter;
 import com.lbcinternal.sensemble.rest.ApiService;
-import com.lbcinternal.sensemble.rest.CroydonClient;
-import com.lbcinternal.sensemble.rest.model.FeedEntry;
+import com.lbcinternal.sensemble.rest.RestClient;
+import com.lbcinternal.sensemble.rest.model.IdeaEntry;
 import com.lbcinternal.sensemble.views.SlidingTabLayout;
 
 import org.json.JSONArray;
@@ -45,7 +45,7 @@ import retrofit.client.Response;
 
 public class IdeasFragment extends Fragment {
 
-    private List<FeedEntry> mEntries;
+    private List<IdeaEntry> mEntries;
 
     public IdeasFragment() {
     }
@@ -70,7 +70,8 @@ public class IdeasFragment extends Fragment {
 
         final ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
 
-        ApiService service = new CroydonClient().getApiService();
+        ApiService service =
+                new RestClient(getActivity()).getApiService();
         service.getIdeas(new ResponseCallback() {
             @Override public void success(Response response) {
                 mEntries = new ArrayList<>();
@@ -91,20 +92,19 @@ public class IdeasFragment extends Fragment {
                 }
 
                 try {
-                    JSONArray entriesArray = new JSONArray(sampleXml);
-                    for (int i = 0; i < entriesArray.length(); i++) {
-                        JSONObject entry = entriesArray.getJSONObject(i);
+                    JSONArray ideasArray = new JSONArray(sampleXml);
+                    for (int i = 0; i < ideasArray.length(); i++) {
+                        JSONObject entry = ideasArray.getJSONObject(i);
 
                         String title = entry.getString("Title");
-                        String body = entry.getString("Story");
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                         Date date = null;
                         try {
-                            date = format.parse(entry.getString("DatePublished"));
+                            date = format.parse(entry.getString("DateCreated"));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        mEntries.add(new FeedEntry(title, body, date));
+                        mEntries.add(new IdeaEntry(title, date));
                     }
 
                 } catch (JSONException e) {
@@ -112,7 +112,7 @@ public class IdeasFragment extends Fragment {
                 }
 
                 if (getActivity() != null) {
-                    feedListView.setAdapter(new FeedListAdapter(getActivity(),
+                    feedListView.setAdapter(new IdeasAdapter(getActivity(),
                             mEntries));
                     feedListView.setOnItemClickListener(new OnItemClickListener() {
                         @Override public void onItemClick(AdapterView<?> parent, View view,
@@ -121,14 +121,12 @@ public class IdeasFragment extends Fragment {
                             DateFormat format = new SimpleDateFormat("F MMM");
                             String date = format.format(creationDate);
                             String title = mEntries.get(position).getTitle();
-                            String body = mEntries.get(position).getBody();
 
                             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                             sp.edit()
                                     .putString("section", "ideas")
                                     .putString("title", title)
                                     .putString("date", date)
-                                    .putString("body", body)
                                     .apply();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);

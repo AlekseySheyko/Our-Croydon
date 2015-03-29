@@ -2,13 +2,13 @@ package com.lbcinternal.sensemble.rest.model;
 
 import java.util.Date;
 
-public class FeedEntry {
+public class NewsEntry {
 
     String mTitle;
     String mBody;
     Date mCreationDate;
 
-    public FeedEntry(String title, String body, Date creationDate) {
+    public NewsEntry(String title, String body, Date creationDate) {
         mTitle = title;
         mBody = body;
         mCreationDate = creationDate;

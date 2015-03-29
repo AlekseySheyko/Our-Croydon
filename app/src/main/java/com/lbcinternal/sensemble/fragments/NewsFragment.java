@@ -14,11 +14,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.lbcinternal.sensemble.activities.DetailActivity;
-import com.lbcinternal.sensemble.adapters.FeedListAdapter;
+import com.lbcinternal.sensemble.adapters.NewsAdapter;
 import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
-import com.lbcinternal.sensemble.rest.model.FeedEntry;
+import com.lbcinternal.sensemble.rest.model.NewsEntry;
 import com.lbcinternal.sensemble.rest.TestClient;
 
 import org.json.JSONArray;
@@ -41,7 +41,7 @@ import retrofit.client.Response;
 
 public class NewsFragment extends Fragment {
 
-    private List<FeedEntry> mEntries;
+    private List<NewsEntry> mEntries;
 
     public NewsFragment() {
     }
@@ -88,7 +88,7 @@ public class NewsFragment extends Fragment {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        mEntries.add(new FeedEntry(title, body, date));
+                        mEntries.add(new NewsEntry(title, body, date));
                     }
 
                 } catch (JSONException e) {
@@ -96,7 +96,7 @@ public class NewsFragment extends Fragment {
                 }
 
                 if (getActivity() != null) {
-                    feedListView.setAdapter(new FeedListAdapter(getActivity(),
+                    feedListView.setAdapter(new NewsAdapter(getActivity(),
                             mEntries));
                     feedListView.setOnItemClickListener(new OnItemClickListener() {
                         @Override public void onItemClick(AdapterView<?> parent, View view,

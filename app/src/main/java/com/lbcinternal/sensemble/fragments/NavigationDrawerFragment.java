@@ -41,6 +41,8 @@ public class NavigationDrawerFragment extends Fragment {
                 + sp.getString("avatarUrl", "");
 
         ImageView avatarImageView = (ImageView) rootView.findViewById(R.id.avatar);
+        avatarImageView.setImageDrawable(getResources()
+                .getDrawable(R.drawable.avatar_sample));
         Picasso.with(getActivity())
                 .load(avatarUrl)
                 .error(R.drawable.avatar_default)

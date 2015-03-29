@@ -14,7 +14,7 @@ import android.widget.ToggleButton;
 
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
-import com.lbcinternal.sensemble.rest.CroydonClient;
+import com.lbcinternal.sensemble.rest.RestClient;
 import com.lbcinternal.sensemble.rest.model.User;
 
 import org.apache.http.HttpStatus;
@@ -62,9 +62,11 @@ public class LoginActivity extends Activity {
         }
         final boolean remember = ((ToggleButton) findViewById(R.id.toggle)).isChecked();
 
-        ApiService service = new CroydonClient().getApiService();
+        ApiService service = new RestClient(this).getApiService();
         service.login(email, password, remember, new Callback<User>() {
             @Override public void success(User user, Response response) {
+                response.getHeaders();
+
                 if (response.getStatus() == HttpStatus.SC_OK && user.isSuccess()) {
                     if (remember) {
                         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(
