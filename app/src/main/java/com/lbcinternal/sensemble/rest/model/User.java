@@ -52,6 +52,7 @@ public class User {
     }
 
     public String getAvatarUrl() {
-        return mAvatarUrl;
+        return "https://lbc-shapecroydon-ci-dev.azurewebsites.net"
+                + mAvatarUrl;
     }
 }

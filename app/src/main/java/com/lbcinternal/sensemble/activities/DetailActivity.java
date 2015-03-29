@@ -36,7 +36,7 @@ public class DetailActivity extends ActionBarActivity {
         bar.setDisplayShowCustomEnabled(true);
         bar.setDisplayShowTitleEnabled(false);
 
-        View abView = LayoutInflater.from(this).inflate(R.layout.feed_entry_title, null);
+        View abView = LayoutInflater.from(this).inflate(R.layout.actionbar_details, null);
         bar.setCustomView(abView);
 
 

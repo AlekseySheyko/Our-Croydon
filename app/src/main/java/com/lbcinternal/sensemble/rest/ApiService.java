@@ -1,5 +1,6 @@
 package com.lbcinternal.sensemble.rest;
 
+import com.lbcinternal.sensemble.rest.model.Comment;
 import com.lbcinternal.sensemble.rest.model.Idea;
 import com.lbcinternal.sensemble.rest.model.IdeaDetails;
 import com.lbcinternal.sensemble.rest.model.User;
@@ -31,6 +32,10 @@ public interface ApiService {
     @GET("/Api/Posts/Get/{ideaId}") void getIdeaDetails(
             @Path("ideaId") String id,
             Callback<IdeaDetails> callback);
+
+    @GET("/Api/Comments/GetList/{ideaId}/500/0") void listComments(
+            @Path("ideaId") String id,
+            Callback<List<Comment>> callback);
 
     @GET("/Account/login.aspx") void login(
             @Query("apiLogin") String username,

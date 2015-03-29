@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        style="@style/ContactContainer">
+
+        <ImageView
+            android:id="@+id/avatar1"
+            style="@style/ContactAvatar"/>
+
+        <TextView
+            android:id="@+id/name1"
+            android:text="Hayley Lewis"
+            style="@style/ContactName"
+            android:layout_alignTop="@+id/avatar1"
+            android:layout_toRightOf="@+id/avatar1"/>
+
+        <TextView
+            android:text="@string/sample_message"
+            style="@style/ContactComment"
+            android:layout_below="@+id/name1"
+            android:layout_toRightOf="@id/avatar1"
+            android:layout_toEndOf="@+id/avatar1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#c9c5c5"
+            android:textSize="14sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            tools:text="2h"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/Divider"/>
+
+</LinearLayout>

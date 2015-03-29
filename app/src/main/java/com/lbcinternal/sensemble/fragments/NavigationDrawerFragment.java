@@ -45,8 +45,7 @@ public class NavigationDrawerFragment extends Fragment {
 
         final SharedPreferences sp = PreferenceManager
                 .getDefaultSharedPreferences(getActivity());
-        String avatarUrl = "https://lbc-shapecroydon-ci-dev.azurewebsites.net"
-                + sp.getString("avatarUrl", "");
+        String avatarUrl = sp.getString("avatarUrl", "");
 
         ImageView avatarImageView = (ImageView) rootView.findViewById(R.id.avatar);
         avatarImageView.setImageDrawable(getResources()

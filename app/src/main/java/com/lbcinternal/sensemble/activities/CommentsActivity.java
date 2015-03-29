@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ListView;
 
 import com.lbcinternal.sensemble.R;
 import com.melnykov.fab.FloatingActionButton;
@@ -16,6 +17,12 @@ public class CommentsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
+
+        // CommentsAdapter adapter = new CommentsAdapter(this, );
+
+        ListView listView = (ListView) findViewById(R.id.comments_list);
+        // listView.setAdapter(adapter);
+
 
         FloatingActionButton addCommentButton = (FloatingActionButton)
                 findViewById(R.id.fab);

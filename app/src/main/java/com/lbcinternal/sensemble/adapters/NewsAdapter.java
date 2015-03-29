@@ -28,7 +28,7 @@ public class NewsAdapter extends ArrayAdapter<NewsEntry> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.feed_entry,
+        View view = inflater.inflate(R.layout.feed_list_item,
                 parent, false);
 
         TextView titleTextView = (TextView) view.findViewById(R.id.title);
