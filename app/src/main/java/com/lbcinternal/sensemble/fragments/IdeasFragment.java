@@ -21,8 +21,6 @@ import com.lbcinternal.sensemble.views.SlidingTabLayout;
 
 public class IdeasFragment extends Fragment {
 
-    // TODO: Search function
-
     public IdeasFragment() {
     }
 
