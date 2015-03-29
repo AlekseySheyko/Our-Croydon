@@ -20,9 +20,6 @@ import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.RestClient;
 import com.lbcinternal.sensemble.rest.model.Idea;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import retrofit.Callback;
@@ -77,9 +74,7 @@ public class IdeasPageFragment extends Fragment {
                     feedListView.setOnItemClickListener(new OnItemClickListener() {
                         @Override public void onItemClick(AdapterView<?> parent, View view,
                                                           int position, long id) {
-                            Date creationDate = ideas.get(position).getCreationDate();
-                            DateFormat format = new SimpleDateFormat("F MMM");
-                            String date = format.format(creationDate);
+                            String date = ideas.get(position).getCreationDate();
                             String title = ideas.get(position).getTitle();
                             String entryId = ideas.get(position).getId();
 

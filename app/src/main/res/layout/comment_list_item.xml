@@ -9,24 +9,25 @@
         style="@style/ContactContainer">
 
         <ImageView
-            android:id="@+id/avatar1"
+            android:id="@+id/avatar"
             style="@style/ContactAvatar"/>
 
         <TextView
-            android:id="@+id/name1"
+            android:id="@+id/name"
             android:text="Hayley Lewis"
             style="@style/ContactName"
-            android:layout_alignTop="@+id/avatar1"
-            android:layout_toRightOf="@+id/avatar1"/>
+            android:layout_alignTop="@+id/avatar"
+            android:layout_toRightOf="@+id/avatar"/>
 
         <TextView
             android:text="@string/sample_message"
-            style="@style/ContactComment"
-            android:layout_below="@+id/name1"
-            android:layout_toRightOf="@id/avatar1"
-            android:layout_toEndOf="@+id/avatar1"/>
+            style="@style/message"
+            android:layout_below="@+id/name"
+            android:layout_toRightOf="@id/avatar"
+            android:layout_toEndOf="@+id/avatar"/>
 
         <TextView
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#c9c5c5"

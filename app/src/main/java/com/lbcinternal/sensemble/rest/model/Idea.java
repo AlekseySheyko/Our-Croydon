@@ -2,6 +2,8 @@ package com.lbcinternal.sensemble.rest.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Idea {
@@ -25,8 +27,9 @@ public class Idea {
         return mTitle;
     }
 
-    public Date getCreationDate() {
-        return mCreationDate;
+    public String getCreationDate() {
+        DateFormat format = new SimpleDateFormat("F MMM");
+        return format.format(mCreationDate);
     }
 
     public String getId() {

@@ -2,6 +2,10 @@ package com.lbcinternal.sensemble.rest.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Comment {
 
     @SerializedName("AuthorName")
@@ -13,10 +17,14 @@ public class Comment {
     @SerializedName("Content")
     String mMessage;
 
-    public Comment(String authorName, String avatarUrl, String message) {
+    @SerializedName("DateCreated")
+    Date mCreationDate;
+
+    public Comment(String authorName, String avatarUrl, String message, Date creationDate) {
         mAuthorName = authorName;
         mAvatarUrl = avatarUrl;
         mMessage = message;
+        mCreationDate = creationDate;
     }
 
     public String getAuthorName() {
@@ -30,5 +38,11 @@ public class Comment {
 
     public String getMessage() {
         return mMessage;
+    }
+
+    public String getCreationDate() {
+        // TODO: Отнимать, а не просто цитировать дату. Времени назад, епта
+        DateFormat format = new SimpleDateFormat("F MMM");
+        return format.format(mCreationDate);
     }
 }
