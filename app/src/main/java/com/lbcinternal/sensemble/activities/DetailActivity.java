@@ -8,6 +8,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.lbcinternal.sensemble.CroydonApp;
+import com.lbcinternal.sensemble.CroydonApp.TrackerName;
 import com.lbcinternal.sensemble.R;
 
 
@@ -38,9 +42,18 @@ public class DetailActivity extends ActionBarActivity {
 
         TextView bodyTextView = (TextView) findViewById(R.id.body);
         bodyTextView.setText(body);
+
+        sendSessionInfo();
     }
 
     public void viewComments(View view) {
         startActivity(new Intent(this, CommentsActivity.class));
+    }
+
+    private void sendSessionInfo() {
+        Tracker tracker = ((CroydonApp) getApplication()).getTracker(
+                TrackerName.APP_TRACKER);
+        tracker.setScreenName(getString(R.string.viewPostScreen));
+        tracker.send(new HitBuilders.AppViewBuilder().build());
     }
 }

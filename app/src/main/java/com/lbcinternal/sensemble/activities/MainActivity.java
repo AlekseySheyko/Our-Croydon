@@ -10,6 +10,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.lbcinternal.sensemble.CroydonApp;
+import com.lbcinternal.sensemble.CroydonApp.TrackerName;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.fragments.IdeasFragment;
 import com.lbcinternal.sensemble.fragments.NewsFragment;
@@ -56,9 +60,18 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
         ft.commit();
+
+        sendSessionInfo();
     }
 
     public DrawerLayout getDrawerLayout() {
         return mDrawerLayout;
+    }
+
+    private void sendSessionInfo() {
+        Tracker tracker = ((CroydonApp) getApplication()).getTracker(
+                TrackerName.APP_TRACKER);
+        tracker.setScreenName(getString(R.string.homeScreen));
+        tracker.send(new HitBuilders.AppViewBuilder().build());
     }
 }

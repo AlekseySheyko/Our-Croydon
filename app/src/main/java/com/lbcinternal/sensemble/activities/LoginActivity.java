@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.lbcinternal.sensemble.CroydonApp;
+import com.lbcinternal.sensemble.CroydonApp.TrackerName;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.RestClient;
@@ -40,6 +44,8 @@ public class LoginActivity extends Activity {
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         }
+
+        sendSessionInfo();
     }
 
     public void signIn(View view) {
@@ -110,5 +116,12 @@ public class LoginActivity extends Activity {
         startActivity(new Intent(this, WebViewActivity.class));
         PreferenceManager.getDefaultSharedPreferences(this)
                 .edit().putString("action", "recover").apply();
+    }
+
+    private void sendSessionInfo() {
+        Tracker tracker = ((CroydonApp) getApplication()).getTracker(
+                TrackerName.APP_TRACKER);
+        tracker.setScreenName(getString(R.string.loginScreen));
+        tracker.send(new HitBuilders.AppViewBuilder().build());
     }
 }
