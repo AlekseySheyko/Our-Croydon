@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.lbcinternal.sensemble.CircleTransform;
 import com.lbcinternal.sensemble.R;
@@ -40,6 +41,15 @@ public class CommentsAdapter extends ArrayAdapter<Comment> {
                 .transform(new CircleTransform())
                 .error(R.drawable.avatar_default)
                 .into(avatarImageView);
+
+        TextView nameTextView = (TextView) view.findViewById(R.id.name);
+        nameTextView.setText(c.getAuthorName());
+
+        TextView messageTextView = (TextView) view.findViewById(R.id.message);
+        messageTextView.setText(c.getMessage());
+
+        TextView dateTextView = (TextView) view.findViewById(R.id.date);
+        dateTextView.setText(c.getCreationDate());
 
         return view;
     }

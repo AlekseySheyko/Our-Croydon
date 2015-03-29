@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.model.Idea;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class IdeasAdapter extends ArrayAdapter<Idea> {
@@ -32,12 +29,11 @@ public class IdeasAdapter extends ArrayAdapter<Idea> {
                 parent, false);
 
         TextView titleTextView = (TextView) view.findViewById(R.id.title);
-        titleTextView.setText(getItem(position).getTitle());
+        Idea i = getItem(position);
+        titleTextView.setText(i.getTitle());
 
         TextView dateTextView = (TextView) view.findViewById(R.id.date);
-        Date date = getItem(position).getCreationDate();
-        DateFormat format = new SimpleDateFormat("F MMM");
-        dateTextView.setText(format.format(date));
+        dateTextView.setText(i.getCreationDate());
 
         return view;
     }

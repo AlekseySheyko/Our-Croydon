@@ -17,7 +17,10 @@ import com.lbcinternal.sensemble.CroydonApp.TrackerName;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.RestClient;
+import com.lbcinternal.sensemble.rest.model.Comment;
 import com.lbcinternal.sensemble.rest.model.IdeaDetails;
+
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -72,6 +75,17 @@ public class DetailActivity extends ActionBarActivity {
 
                     TextView scoreTextView = (TextView) findViewById(R.id.rating);
                     scoreTextView.setText(ideaDetails.getRating() + " / 5");
+                }
+
+                @Override public void failure(RetrofitError error) {
+                    error.printStackTrace();
+                }
+            });
+
+            service.listComments(id, new Callback<List<Comment>>() {
+                @Override public void success(List<Comment> comments, Response response) {
+                    TextView countTextView = (TextView) findViewById(R.id.comments_count);
+                    countTextView.setText(comments.size() + "");
                 }
 
                 @Override public void failure(RetrofitError error) {
