@@ -18,16 +18,28 @@ public class RestClient {
     private ApiService mApiService;
 
     public RestClient() {
+        buildRestClient(null);
+    }
 
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                .create();
+    public RestClient(String dateFormat) {
+        buildRestClient(dateFormat);
+    }
+
+    private void buildRestClient(String dateFormat) {
 
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setLogLevel(LogLevel.FULL)
                 .setClient(new OkClient(new OkHttpClient()))
-                .setConverter(new GsonConverter(gson))
                 .setEndpoint(BASE_URL);
+
+
+        if (dateFormat != null) {
+            Gson gson = new GsonBuilder()
+                    .setDateFormat(dateFormat)
+                    .create();
+
+            builder.setConverter(new GsonConverter(gson));
+        }
 
         builder.setRequestInterceptor(new RequestInterceptor() {
             @Override public void intercept(RequestFacade request) {

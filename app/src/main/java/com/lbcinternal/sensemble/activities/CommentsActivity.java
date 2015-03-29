@@ -33,7 +33,7 @@ public class CommentsActivity extends ActionBarActivity {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         String ideaId = sp.getString("ideaId", "");
 
-        ApiService service = new RestClient().getApiService();
+        ApiService service = new RestClient("yyyy-MM-dd HH:mm").getApiService();
         service.listComments(ideaId, new Callback<List<Comment>>() {
             @Override public void success(List<Comment> comments, Response response) {
 
