@@ -44,6 +44,7 @@ public class RestClient {
         builder.setRequestInterceptor(new RequestInterceptor() {
             @Override public void intercept(RequestFacade request) {
                 request.addHeader("Accept", "application/json");
+                request.addHeader("Content-Type", "application/json");
                 request.addHeader("Cookie",
                         "ARRAffinity=4a6693a5405e04c54f09470ae89e2b2e1cc413e698c14d2bdbefbc7dbcd395a1; " +
                                 "ASP.NET_SessionId=2vguy1mlsh1wxc5loqaixwul; " +

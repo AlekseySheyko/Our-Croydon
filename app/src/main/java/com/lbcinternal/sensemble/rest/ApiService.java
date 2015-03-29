@@ -8,8 +8,10 @@ import com.lbcinternal.sensemble.rest.model.User;
 import java.util.List;
 
 import retrofit.Callback;
+import retrofit.ResponseCallback;
 import retrofit.client.Response;
 import retrofit.http.GET;
+import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.Query;
 
@@ -36,6 +38,11 @@ public interface ApiService {
     @GET("/Api/Comments/GetList/{ideaId}/500/0") void listComments(
             @Path("ideaId") String id,
             Callback<List<Comment>> callback);
+
+    @POST("/Api/Comments") void postComment(
+            @Query("Title") String message,
+            @Query("PostId") String ideaId,
+            ResponseCallback callback);
 
     @GET("/Account/login.aspx") void login(
             @Query("apiLogin") String username,
