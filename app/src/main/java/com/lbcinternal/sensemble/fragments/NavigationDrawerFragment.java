@@ -29,6 +29,8 @@ import com.squareup.picasso.Picasso;
 
 public class NavigationDrawerFragment extends Fragment {
 
+    // TODO: Show real avatar
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
