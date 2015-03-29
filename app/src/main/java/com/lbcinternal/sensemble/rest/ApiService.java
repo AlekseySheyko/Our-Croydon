@@ -15,7 +15,7 @@ public interface ApiService {
     @GET("/api/offers/getall") void getOffers(
             Callback<Response> callback);
 
-    @GET("/Api/Posts/GetList/10/0") void getIdeas(
+    @GET("/Api/Posts/GetList/800/0") void getIdeas(
             Callback<Response> callback);
 
     @GET("/Account/login.aspx") void login(
