@@ -1,14 +1,21 @@
 package com.lbcinternal.sensemble.rest.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
-public class IdeaEntry {
+public class Idea {
 
-    int mId;
+    @SerializedName("Id")
+    String mId;
+
+    @SerializedName("Title")
     String mTitle;
+
+    @SerializedName("DateCreated")
     Date mCreationDate;
 
-    public IdeaEntry(int id, String title, Date creationDate) {
+    public Idea(String id, String title, Date creationDate) {
         mId = id;
         mTitle = title;
         mCreationDate = creationDate;
@@ -22,7 +29,7 @@ public class IdeaEntry {
         return mCreationDate;
     }
 
-    public int getId() {
+    public String getId() {
         return mId;
     }
 }

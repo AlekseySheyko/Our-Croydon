@@ -1,6 +1,9 @@
 package com.lbcinternal.sensemble.rest;
 
+import com.lbcinternal.sensemble.rest.model.Idea;
 import com.lbcinternal.sensemble.rest.model.User;
+
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.client.Response;
@@ -15,13 +18,13 @@ public interface ApiService {
     @GET("/api/offers/getall") void getOffers(
             Callback<Response> callback);
 
-    @GET("/Api/Posts/GetList/800/0") void getIdeas(
+    @GET("/Api/Posts/GetList/500/0") void getIdeas(
             @Query("order") int order,
-            Callback<Response> callback);
+            Callback<List<Idea>> callback);
 
-    @GET("/Api/Posts/GetList/800/0") void findIdeas(
+    @GET("/Api/Posts/GetList/500/0") void findIdeas(
             @Query("filter") String query,
-            Callback<Response> callback);
+            Callback<List<Idea>> callback);
 
     @GET("") void getIdeaDetails();
 

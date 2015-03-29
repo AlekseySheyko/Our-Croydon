@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
         }
         final boolean remember = ((ToggleButton) findViewById(R.id.toggle)).isChecked();
 
-        ApiService service = new RestClient(this).getApiService();
+        ApiService service = new RestClient().getApiService();
         service.login(email, password, remember, new Callback<User>() {
             @Override public void success(User user, Response response) {
                 response.getHeaders();

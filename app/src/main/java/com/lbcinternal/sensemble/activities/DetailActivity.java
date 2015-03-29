@@ -46,7 +46,8 @@ public class DetailActivity extends ActionBarActivity {
             TextView bodyTextView = (TextView) findViewById(R.id.body);
             bodyTextView.setText(body);
         } else {
-            ApiService service = new RestClient(this).getApiService();
+            ApiService service = new RestClient().getApiService();
+            // TODO: Get idea details
         }
 
         sendSessionInfo();

@@ -1,16 +1,14 @@
 package com.lbcinternal.sensemble.rest;
 
-import android.content.Context;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
-
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
 import retrofit.client.OkClient;
+import retrofit.converter.GsonConverter;
 
 public class RestClient {
 
@@ -19,20 +17,21 @@ public class RestClient {
 
     private ApiService mApiService;
 
-    public RestClient(final Context context) {
+    public RestClient() {
 
-        OkHttpClient client = new OkHttpClient();
-        CookieManager cookieManager = new CookieManager();
-        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
-        client.setCookieHandler(cookieManager);
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .create();
 
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setLogLevel(LogLevel.FULL)
-                .setClient(new OkClient(client))
+                .setClient(new OkClient(new OkHttpClient()))
+                .setConverter(new GsonConverter(gson))
                 .setEndpoint(BASE_URL);
 
         builder.setRequestInterceptor(new RequestInterceptor() {
             @Override public void intercept(RequestFacade request) {
+                request.addHeader("Accept", "application/json");
                 request.addHeader("Cookie",
                         "ARRAffinity=4a6693a5405e04c54f09470ae89e2b2e1cc413e698c14d2bdbefbc7dbcd395a1; " +
                                 "ASP.NET_SessionId=2vguy1mlsh1wxc5loqaixwul; " +

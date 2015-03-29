@@ -8,18 +8,18 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.lbcinternal.sensemble.R;
-import com.lbcinternal.sensemble.rest.model.IdeaEntry;
+import com.lbcinternal.sensemble.rest.model.Idea;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class IdeasAdapter extends ArrayAdapter<IdeaEntry> {
+public class IdeasAdapter extends ArrayAdapter<Idea> {
 
-    List<IdeaEntry> mEntries;
+    List<Idea> mEntries;
 
-    public IdeasAdapter(Context context, List<IdeaEntry> entries) {
+    public IdeasAdapter(Context context, List<Idea> entries) {
         super(context, 0, entries);
         mEntries = entries;
     }
