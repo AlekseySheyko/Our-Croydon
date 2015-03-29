@@ -58,11 +58,11 @@ public class IdeasPageFragment extends Fragment {
 
         final ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
 
-        //        int order = getArguments().getInt("order");
+        int order = getArguments().getInt("order");
 
         ApiService service =
                 new RestClient(getActivity()).getApiService();
-        service.getIdeas(new ResponseCallback() {
+        service.getIdeas(order, new ResponseCallback() {
             @Override public void success(Response response) {
                 mEntries = new ArrayList<>();
 

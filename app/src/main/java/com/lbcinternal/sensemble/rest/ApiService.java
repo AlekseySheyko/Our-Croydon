@@ -16,6 +16,7 @@ public interface ApiService {
             Callback<Response> callback);
 
     @GET("/Api/Posts/GetList/800/0") void getIdeas(
+            @Query("order") int order,
             Callback<Response> callback);
 
     @GET("/Account/login.aspx") void login(

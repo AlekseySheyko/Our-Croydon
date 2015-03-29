@@ -69,7 +69,15 @@ public class IdeasFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            return new IdeasPageFragment();
+            Bundle args = new Bundle();
+            if (position == 0) {
+                args.putInt("order", 0);
+            } else if (position == 1) {
+                args.putInt("order", 2);
+            }
+            IdeasPageFragment fragment = new IdeasPageFragment();
+            fragment.setArguments(args);
+            return fragment;
         }
 
         @Override
