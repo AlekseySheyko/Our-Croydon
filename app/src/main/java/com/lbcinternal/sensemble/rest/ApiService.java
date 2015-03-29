@@ -19,6 +19,10 @@ public interface ApiService {
             @Query("order") int order,
             Callback<Response> callback);
 
+    @GET("/Api/Posts/GetList/800/0") void findIdeas(
+            @Query("filter") String query,
+            Callback<Response> callback);
+
     @GET("/Account/login.aspx") void login(
             @Query("apiLogin") String username,
             @Query("apiPassword") String password,

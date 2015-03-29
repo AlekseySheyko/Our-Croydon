@@ -56,13 +56,31 @@ public class IdeasPageFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_ideas_page, container, false);
 
-        final ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
 
-        int order = getArguments().getInt("order");
 
-        ApiService service =
-                new RestClient(getActivity()).getApiService();
-        service.getIdeas(order, new ResponseCallback() {
+        if (getArguments().getString("query") == null) {
+
+            int order = getArguments().getInt("order");
+            ApiService service = new RestClient(getActivity())
+                    .getApiService();
+            service.getIdeas(order, getResponseCallback(rootView));
+
+        } else {
+
+            String query = getArguments().getString("query");
+            ApiService service = new RestClient(getActivity())
+                    .getApiService();
+            service.findIdeas(query, getResponseCallback(rootView));
+
+        }
+
+        return rootView;
+    }
+
+    private ResponseCallback getResponseCallback(final View rootView) {
+        ResponseCallback callback = new ResponseCallback() {
+            final ListView feedListView = (ListView) rootView.findViewById(R.id.list_view);
+
             @Override public void success(Response response) {
                 mEntries = new ArrayList<>();
 
@@ -130,10 +148,7 @@ public class IdeasPageFragment extends Fragment {
             @Override public void failure(RetrofitError error) {
                 error.printStackTrace();
             }
-        });
-
-        return rootView;
+        };
+        return callback;
     }
-
-
 }
