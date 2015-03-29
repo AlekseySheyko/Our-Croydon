@@ -58,7 +58,6 @@ public class MyWebViewClient extends WebViewClient {
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         } else if (url.equals("https://lbc-shapecroydon-ci-dev.azurewebsites.net/Account/login.aspx?apiLogoff=true")) {
             webView.getContext().startActivity(new Intent(
-                    // TODO: Do not return to main activity when pressing back on logging screen after logout
                     webView.getContext(), LoginActivity.class));
         }
     }

@@ -49,8 +49,6 @@ public class OffersPageFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Add loading spinner to all page fragments
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
