@@ -36,7 +36,7 @@
             android:name=".activities.CommentsActivity"
             android:label="@string/title_activity_comments"
             android:parentActivityName=".activities.DetailActivity"
-            android:theme="@style/AppTheme.Login" >
+            android:theme="@style/AppTheme.ActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.DetailActivity" />
