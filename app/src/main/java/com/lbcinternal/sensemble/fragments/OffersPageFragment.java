@@ -118,7 +118,7 @@ public class OffersPageFragment extends Fragment {
                                     .putString("section", "offers")
                                     .putString("title", title)
                                     .putString("date", date)
-                                    .putString("body", body)
+                                    .putString("body", "")
                                     .apply();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);

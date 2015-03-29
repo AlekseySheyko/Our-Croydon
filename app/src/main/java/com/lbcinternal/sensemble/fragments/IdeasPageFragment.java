@@ -116,6 +116,7 @@ public class IdeasPageFragment extends Fragment {
                             sp.edit()
                                     .putString("section", "ideas")
                                     .putString("title", title)
+                                    .putString("body", "")
                                     .putString("date", date)
                                     .apply();
 
