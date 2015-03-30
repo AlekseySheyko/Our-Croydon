@@ -10,6 +10,8 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.ResponseCallback;
 import retrofit.client.Response;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
@@ -39,9 +41,10 @@ public interface ApiService {
             @Path("ideaId") String id,
             Callback<List<Comment>> callback);
 
+    @FormUrlEncoded
     @POST("/Api/Comments") void postComment(
-            @Query("Title") String message,
-            @Query("PostId") String ideaId,
+            @Field("Title") String message,
+            @Field("PostId") String ideaId,
             ResponseCallback callback);
 
     @GET("/Account/login.aspx") void login(
