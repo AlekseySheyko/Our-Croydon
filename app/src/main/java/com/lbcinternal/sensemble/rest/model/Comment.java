@@ -41,7 +41,6 @@ public class Comment {
     }
 
     public String getCreationDate() {
-        // TODO: Отнимать, а не просто цитировать дату. Времени назад, епта
         DateFormat format = new SimpleDateFormat("F MMM");
         return format.format(mCreationDate);
     }
