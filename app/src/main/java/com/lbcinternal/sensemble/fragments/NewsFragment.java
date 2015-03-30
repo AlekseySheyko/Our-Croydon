@@ -110,9 +110,9 @@ public class NewsFragment extends Fragment {
                             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                             sp.edit()
                                     .putString("section", "news")
-                                    .putString("title", title)
-                                    .putString("date", date)
-                                    .putString("body", body)
+                                    .putString("ideaTitle", title)
+                                    .putString("ideaDate", date)
+                                    .putString("ideaBody", body)
                                     .apply();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);

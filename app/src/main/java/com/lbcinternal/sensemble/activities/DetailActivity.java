@@ -46,7 +46,7 @@ public class DetailActivity extends ActionBarActivity {
         SharedPreferences sp = PreferenceManager
                 .getDefaultSharedPreferences(this);
 
-        String section = sp.getString("section", "");
+        final String section = sp.getString("section", "");
         if (section.equals("ideas")) {
             findViewById(R.id.feedback_container).setVisibility(View.VISIBLE);
         }
@@ -71,7 +71,9 @@ public class DetailActivity extends ActionBarActivity {
             service.getIdeaDetails(id, new Callback<IdeaDetails>() {
                 @Override public void success(IdeaDetails ideaDetails, Response response) {
                     TextView bodyTextView = (TextView) findViewById(R.id.body);
-                    bodyTextView.setText(ideaDetails.getBody());
+                    if (section.equals("ideas")) {
+                        bodyTextView.setText(ideaDetails.getBody());
+                    }
 
                     TextView scoreTextView = (TextView) findViewById(R.id.rating);
                     scoreTextView.setText(ideaDetails.getRating() + " / 5");

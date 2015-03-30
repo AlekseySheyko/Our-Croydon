@@ -114,9 +114,9 @@ public class OffersPageFragment extends Fragment {
                             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                             sp.edit()
                                     .putString("section", "offers")
-                                    .putString("title", title)
-                                    .putString("date", date)
-                                    .putString("body", "")
+                                    .putString("ideaTitle", title)
+                                    .putString("ideaDate", date)
+                                    .putString("ideaBody", "")
                                     .apply();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);
