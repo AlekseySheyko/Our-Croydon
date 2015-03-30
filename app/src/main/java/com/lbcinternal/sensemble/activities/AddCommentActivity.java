@@ -42,7 +42,7 @@ public class AddCommentActivity extends ActionBarActivity {
                         return false;
                     }
 
-                    ApiService service = new RestClient().getApiService();
+                    ApiService service = new RestClient(AddCommentActivity.this).getApiService();
                     service.postComment(message, ideaId, new ResponseCallback() {
                         @Override public void success(Response response) {
                         }

@@ -46,14 +46,14 @@ public class IdeasPageFragment extends Fragment {
         if (getArguments().getString("query") == null) {
 
             int order = getArguments().getInt("order");
-            ApiService service = new RestClient("yyyy-MM-dd'T'HH:mm:ss")
+            ApiService service = new RestClient(getActivity(), "yyyy-MM-dd'T'HH:mm:ss")
                     .getApiService();
             service.getIdeas(order, getResponseCallback(rootView));
 
         } else {
 
             String query = getArguments().getString("query");
-            ApiService service = new RestClient("yyyy-MM-dd'T'HH:mm:ss")
+            ApiService service = new RestClient(getActivity(), "yyyy-MM-dd'T'HH:mm:ss")
                     .getApiService();
             service.findIdeas(query, getResponseCallback(rootView));
 

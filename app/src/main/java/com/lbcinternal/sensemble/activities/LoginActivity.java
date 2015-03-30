@@ -69,12 +69,12 @@ public class LoginActivity extends Activity {
         }
         final boolean remember = ((ToggleButton) findViewById(R.id.toggle)).isChecked();
 
-        ApiService service = new RestClient().getApiService();
+        ApiService service = new RestClient(this).getApiService();
         service.login(email, password, remember, new Callback<User>() {
             @Override public void success(User user, Response response) {
                 String sessionKey = null;
                 for (Header header : response.getHeaders()) {
-                    if (header.getName().equals("cookie")) {
+                    if (header.getValue().contains("AUXBLOGENGINE")) {
                         sessionKey = header.getValue();
                     }
                 }

@@ -67,7 +67,7 @@ public class DetailActivity extends ActionBarActivity {
             bodyTextView.setText(body);
         } else {
             String id = sp.getString("ideaId", "");
-            ApiService service = new RestClient("yyyy-MM-dd'T'HH:mm:ss").getApiService();
+            ApiService service = new RestClient(this, "yyyy-MM-dd'T'HH:mm:ss").getApiService();
             service.getIdeaDetails(id, new Callback<IdeaDetails>() {
                 @Override public void success(IdeaDetails ideaDetails, Response response) {
                     TextView bodyTextView = (TextView) findViewById(R.id.body);
@@ -82,7 +82,7 @@ public class DetailActivity extends ActionBarActivity {
                 }
             });
 
-            service = new RestClient("yyyy-MM-dd HH:mm").getApiService();
+            service = new RestClient(this, "yyyy-MM-dd HH:mm").getApiService();
             service.listComments(id, new Callback<List<Comment>>() {
                 @Override public void success(List<Comment> comments, Response response) {
                     TextView countTextView = (TextView) findViewById(R.id.comments_count);
