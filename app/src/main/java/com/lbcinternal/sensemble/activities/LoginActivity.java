@@ -25,6 +25,7 @@ import org.apache.http.HttpStatus;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
+import retrofit.client.Header;
 import retrofit.client.Response;
 
 
@@ -71,7 +72,12 @@ public class LoginActivity extends Activity {
         ApiService service = new RestClient().getApiService();
         service.login(email, password, remember, new Callback<User>() {
             @Override public void success(User user, Response response) {
-                response.getHeaders();
+                String sessionKey = null;
+                for (Header header : response.getHeaders()) {
+                    if (header.getName().equals("cookie")) {
+                        sessionKey = header.getValue();
+                    }
+                }
 
                 if (response.getStatus() == HttpStatus.SC_OK && user.isSuccess()) {
                     if (remember) {
@@ -80,7 +86,7 @@ public class LoginActivity extends Activity {
                         sp.edit()
                                 .putBoolean("rememberMe", remember)
                                 .putBoolean("isSuccess", user.isSuccess())
-                                .putString("sessionId", user.getSessionId())
+                                .putString("sessionId", sessionKey)
                                 .putString("username", user.getUsername())
                                 .putString("email", user.getEmail())
                                 .putString("phone", user.getPhone())

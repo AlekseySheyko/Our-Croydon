@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.rest.ApiService;
@@ -34,6 +35,12 @@ public class AddCommentActivity extends ActionBarActivity {
                             AddCommentActivity.this);
                     String ideaId = sp.getString("ideaId", "");
                     String message = editText.getText().toString();
+
+                    if (message.isEmpty()) {
+                        Toast.makeText(AddCommentActivity.this, "Comment cannot be empty",
+                                Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
 
                     ApiService service = new RestClient().getApiService();
                     service.postComment(message, ideaId, new ResponseCallback() {
