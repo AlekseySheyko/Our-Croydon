@@ -62,7 +62,7 @@ public class DetailActivity extends ActionBarActivity {
         dateTextView.setText(date);
 
 
-        if (!body.isEmpty()) {
+        if (!section.equals("ideas")) {
             TextView bodyTextView = (TextView) findViewById(R.id.body);
             bodyTextView.setText(body);
         } else {
@@ -71,9 +71,7 @@ public class DetailActivity extends ActionBarActivity {
             service.getIdeaDetails(id, new Callback<IdeaDetails>() {
                 @Override public void success(IdeaDetails ideaDetails, Response response) {
                     TextView bodyTextView = (TextView) findViewById(R.id.body);
-                    if (section.equals("ideas")) {
-                        bodyTextView.setText(ideaDetails.getBody());
-                    }
+                    bodyTextView.setText(ideaDetails.getBody());
 
                     TextView scoreTextView = (TextView) findViewById(R.id.rating);
                     scoreTextView.setText(ideaDetails.getRating() + " / 5");
