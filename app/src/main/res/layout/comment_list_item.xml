@@ -23,6 +23,8 @@
             android:id="@+id/message"
             android:text="@string/sample_message"
             style="@style/message"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:layout_below="@+id/name"
             android:layout_toRightOf="@id/avatar"
             android:layout_toEndOf="@+id/avatar"/>

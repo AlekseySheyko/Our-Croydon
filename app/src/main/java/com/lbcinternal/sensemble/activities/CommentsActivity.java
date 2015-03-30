@@ -7,7 +7,10 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.adapters.CommentsAdapter;
@@ -39,8 +42,19 @@ public class CommentsActivity extends ActionBarActivity {
 
                 CommentsAdapter adapter = new CommentsAdapter(CommentsActivity.this, comments);
 
-                ListView listView = (ListView) findViewById(R.id.comments_list);
+                final ListView listView = (ListView) findViewById(R.id.comments_list);
                 listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new OnItemClickListener() {
+                    @Override public void onItemClick(AdapterView<?> parent, View view,
+                                                      int position, long id) {
+                        TextView commentLabel = (TextView) view.findViewById(R.id.message);
+                        if (commentLabel.getMaxLines() == 2) {
+                            commentLabel.setMaxLines(Integer.MAX_VALUE);
+                        } else {
+                            commentLabel.setMaxLines(2);
+                        }
+                    }
+                });
             }
 
             @Override public void failure(RetrofitError error) {
