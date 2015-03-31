@@ -40,7 +40,7 @@ public class IdeasPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_ideas_page, container, false);
+        View rootView = inflater.inflate(R.layout.list_layout, container, false);
 
 
         if (getArguments().getString("query") == null) {
@@ -66,8 +66,11 @@ public class IdeasPageFragment extends Fragment {
         Callback<List<Idea>> callback = new Callback<List<Idea>>() {
             @Override public void success(final List<Idea> ideas, Response response) {
                 if (getActivity() != null) {
+                    rootView.findViewById(R.id.progressBar).setVisibility(View.GONE);
+
                     ListView feedListView = (ListView) rootView.findViewById(
                             R.id.list_view);
+                    feedListView.setVisibility(View.VISIBLE);
 
                     feedListView.setAdapter(new IdeasAdapter(getActivity(),
                             ideas));

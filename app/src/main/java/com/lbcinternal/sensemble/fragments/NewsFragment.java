@@ -49,10 +49,7 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_no_tabs, container, false);
-
-        final ListView feedListView = (ListView)
-                rootView.findViewById(R.id.list_view);
+        final View rootView = inflater.inflate(R.layout.list_layout, container, false);
 
         ApiService service = new TestClient().getApiService();
         service.getNews(new ResponseCallback() {
@@ -96,6 +93,12 @@ public class NewsFragment extends Fragment {
                 }
 
                 if (getActivity() != null) {
+                    rootView.findViewById(R.id.progressBar).setVisibility(View.GONE);
+
+                    ListView feedListView = (ListView)
+                        rootView.findViewById(R.id.list_view);
+                    feedListView.setVisibility(View.VISIBLE);
+
                     feedListView.setAdapter(new NewsAdapter(getActivity(),
                             mEntries));
                     feedListView.setOnItemClickListener(new OnItemClickListener() {
