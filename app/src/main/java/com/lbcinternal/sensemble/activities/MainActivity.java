@@ -1,6 +1,12 @@
 package com.lbcinternal.sensemble.activities;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
@@ -28,6 +34,31 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (!isOnline()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Network lost");
+            builder.setMessage("An internet connection is required to use Our Croydon. Please check your connection and try again.");
+            builder.setIcon(R.drawable.ic_action_airplane_mode_on);
+            // Add the buttons
+            builder.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                    startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Finish", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User confirm exit
+                    finish();
+                }
+            });
+            // Create the AlertDialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            return;
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,5 +104,12 @@ public class MainActivity extends ActionBarActivity {
                 TrackerName.APP_TRACKER);
         tracker.setScreenName(getString(R.string.homeScreen));
         tracker.send(new HitBuilders.AppViewBuilder().build());
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 }
