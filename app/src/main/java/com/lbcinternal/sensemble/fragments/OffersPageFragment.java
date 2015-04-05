@@ -119,7 +119,7 @@ public class OffersPageFragment extends Fragment {
                                     .putString("section", "offers")
                                     .putString("ideaTitle", title)
                                     .putString("ideaDate", date)
-                                    .putString("ideaBody", "")
+                                    .putString("ideaBody", body)
                                     .apply();
 
                             Intent intent = new Intent(getActivity(), DetailActivity.class);
