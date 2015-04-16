@@ -1,7 +1,9 @@
 package com.lbcinternal.sensemble.activities;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
@@ -45,6 +47,7 @@ public class CommentsActivity extends ActionBarActivity {
                 final ListView listView = (ListView) findViewById(R.id.comments_list);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new OnItemClickListener() {
+                    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                     @Override public void onItemClick(AdapterView<?> parent, View view,
                                                       int position, long id) {
                         TextView commentLabel = (TextView) view.findViewById(R.id.message);

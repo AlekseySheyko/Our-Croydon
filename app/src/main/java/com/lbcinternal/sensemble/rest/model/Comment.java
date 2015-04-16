@@ -32,7 +32,7 @@ public class Comment {
     }
 
     public String getAvatarUrl() {
-        return "https://lbc-shapecroydon-ci-dev.azurewebsites.net"
+        return "https://www.shapecroydon.org"
                 + mAvatarUrl;
     }
 

@@ -15,7 +15,7 @@ import retrofit.converter.GsonConverter;
 public class RestClient {
 
     private static final String BASE_URL =
-            "https://lbc-shapecroydon-ci-dev.azurewebsites.net";
+            "https://www.shapecroydon.org";
 
     private Context mContext;
     private ApiService mApiService;
