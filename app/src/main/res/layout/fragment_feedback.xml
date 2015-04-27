@@ -19,8 +19,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#ecf0f1"
+        android:layout_height="1dp"
+        android:background="#fff0f4f5"
         android:layout_marginLeft="11dp"
         android:layout_marginRight="11dp"/>
 

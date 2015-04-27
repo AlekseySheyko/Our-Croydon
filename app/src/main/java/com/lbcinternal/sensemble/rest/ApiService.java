@@ -3,6 +3,7 @@ package com.lbcinternal.sensemble.rest;
 import com.lbcinternal.sensemble.rest.model.Comment;
 import com.lbcinternal.sensemble.rest.model.Idea;
 import com.lbcinternal.sensemble.rest.model.IdeaDetails;
+import com.lbcinternal.sensemble.rest.model.PostCategory;
 import com.lbcinternal.sensemble.rest.model.User;
 
 import java.util.List;
@@ -52,5 +53,8 @@ public interface ApiService {
             @Query("apiPassword") String password,
             @Query("rememberMe") boolean remember,
             Callback<User> callback);
+
+    @GET("/Api/categories") void getPostCategories(
+            Callback<List<PostCategory>> callback);
 
 }
