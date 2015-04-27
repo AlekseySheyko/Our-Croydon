@@ -36,8 +36,9 @@ public class NewsAdapter extends ArrayAdapter<NewsEntry> {
 
         TextView dateTextView = (TextView) view.findViewById(R.id.date);
         Date date = getItem(position).getCreationDate();
-        DateFormat format = new SimpleDateFormat("F MMM");
-        dateTextView.setText(format.format(date));
+        DateFormat format = new SimpleDateFormat("d MMM");
+        String formattedDate = format.format(date);
+        dateTextView.setText(formattedDate);
 
         return view;
     }

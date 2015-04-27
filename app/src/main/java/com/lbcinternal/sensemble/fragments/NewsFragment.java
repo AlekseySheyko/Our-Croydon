@@ -105,7 +105,7 @@ public class NewsFragment extends Fragment {
                         @Override public void onItemClick(AdapterView<?> parent, View view,
                                                           int position, long id) {
                             Date creationDate = mEntries.get(position).getCreationDate();
-                            DateFormat format = new SimpleDateFormat("F MMM");
+                            DateFormat format = new SimpleDateFormat("d MMM");
                             String date = format.format(creationDate);
                             String title = mEntries.get(position).getTitle();
                             String body = mEntries.get(position).getBody();

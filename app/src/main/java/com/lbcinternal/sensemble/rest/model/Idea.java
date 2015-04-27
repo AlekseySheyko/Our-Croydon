@@ -28,7 +28,7 @@ public class Idea {
     }
 
     public String getCreationDate() {
-        DateFormat format = new SimpleDateFormat("F MMM");
+        DateFormat format = new SimpleDateFormat("d MMM");
         return format.format(mCreationDate);
     }
 

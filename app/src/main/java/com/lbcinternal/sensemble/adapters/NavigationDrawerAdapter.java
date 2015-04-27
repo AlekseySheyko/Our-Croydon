@@ -13,7 +13,7 @@ public class NavigationDrawerAdapter extends ArrayAdapter<String> {
 
     public NavigationDrawerAdapter(Context context) {
         super(context, 0, new String[]{
-                "News", "Offers and events", "Shape Croydon",
+                "News", "Offers and events", "Shape Croydon", "Feedback",
                 "Settings", "Help", "Log Out"});
     }
 
@@ -22,11 +22,11 @@ public class NavigationDrawerAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view;
-        if (position <= 2) {
+        if (position <= 3) {
             view = inflater.inflate(R.layout.drawer_list_item_main,
                     parent, false);
 
-            if (position == 2) {
+            if (position == 3) {
                 view.findViewById(R.id.separator).setVisibility(
                         View.VISIBLE);
             }
