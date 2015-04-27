@@ -21,7 +21,7 @@ public class IdeaCategory {
         return mId;
     }
 
-    public String getName() {
+    public String getTitle() {
         return mName;
     }
 }

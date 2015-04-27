@@ -20,15 +20,18 @@ import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.RestClient;
-import com.lbcinternal.sensemble.rest.model.Idea;
 import com.lbcinternal.sensemble.rest.model.IdeaCategory;
 import com.lbcinternal.sensemble.views.CategoryPicker;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import retrofit.Callback;
+import retrofit.ResponseCallback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
+import retrofit.mime.TypedInput;
 
 public class PostIdeaFragment extends Fragment {
 
@@ -59,7 +62,7 @@ public class PostIdeaFragment extends Fragment {
 
                 String[] categories = new String[postCategories.size()];
                 for (int i = 0; i < postCategories.size(); i++) {
-                    categories[i] = postCategories.get(i).getName();
+                    categories[i] = postCategories.get(i).getTitle();
 
                     if (postCategories.get(i).isChecked()) {
                         picker.setValue(i);
@@ -96,10 +99,27 @@ public class PostIdeaFragment extends Fragment {
                     return;
                 }
 
-                service.postIdea(title, body, title, category, new String[]{}, true, true, isAnonymous, new Callback<Idea>() {
+                TypedInput in = null;
+                try {
+                    String json = "{\"Title\":\"" + title + "\"," +
+                            "\"Content\":\"" + body + "\"," +
+                            "\"Slug\":\"" + title + "\"," +
+                            "\"Categories\":[{" +
+                                "\"IsChecked\":" + category.isChecked() + "," +
+                                "\"Id\":\"" + category.getId() + "\"," +
+                                "\"Title\":\"" + category.getTitle() + "\"}]," +
+                            "\"Tags\":[]," +
+                            "\"HasCommentsEnabled\":true," +
+                            "\"IsPublished\":true," +
+                            "\"IsAnonymous\":" + isAnonymous + "}";
+                    in = new TypedByteArray("application/json", json.getBytes("UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                service.postIdea(in, new ResponseCallback() {
                     @Override
-                    public void success(Idea idea, Response response) {
-                        
+                    public void success(Response response) {
                     }
 
                     @Override
@@ -111,7 +131,6 @@ public class PostIdeaFragment extends Fragment {
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
-
 
 
         return rootView;
@@ -130,8 +149,7 @@ public class PostIdeaFragment extends Fragment {
                     e.printStackTrace();
                 } catch (Resources.NotFoundException e) {
                     e.printStackTrace();
-                }
-                catch (IllegalAccessException e) {
+                } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -139,7 +157,8 @@ public class PostIdeaFragment extends Fragment {
         }
     }
 
-    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((MainActivity) getActivity())
                 .getSupportActionBar().setTitle("Post your Idea");
