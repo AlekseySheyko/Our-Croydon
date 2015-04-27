@@ -95,7 +95,7 @@ public class PostIdeaFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please enter a title", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (body.isEmpty()) {
-                    Toast.makeText(getActivity(), "Please enter your idea", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please enter a description", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

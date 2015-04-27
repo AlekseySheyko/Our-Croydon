@@ -1,6 +1,8 @@
 package com.lbcinternal.sensemble.fragments;
 
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,9 @@ import android.widget.Toast;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.activities.MainActivity;
 import com.sendgrid.SendGrid;
+import com.sendgrid.SendGridException;
+
+import org.json.JSONException;
 
 public class FeedbackFragment extends Fragment {
 
@@ -35,45 +40,44 @@ public class FeedbackFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    SendGrid sendgrid = new SendGrid("api_user", "api_key");
-
-                    SendGrid.Email email = new SendGrid.Email();
-
-                    email.addTo("test@sendgrid.com");
-                    email.setFrom("you@youremail.com");
-                    email.setSubject("Sending with SendGrid is Fun");
-                    email.setHtml("and easy to do anywhere, even with Java");
-
-                    SendGrid.Response response = sendgrid.send(email);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                new SendEmailTask().execute();
 
                 Toast.makeText(getActivity(), "Thanks for your feedback!", Toast.LENGTH_SHORT).show();
+                
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 
         return rootView;
     }
 
-    private void sendEmail() {
-        try {
-            String message = mMessageEditText.getText().toString();
+    private class SendEmailTask extends AsyncTask<Void, Void, Void> {
 
-            SendGrid sendgrid = new SendGrid("OurCroydonAndroid", "TME1921hs");
+        @Override
+        protected Void doInBackground(Void... voids) {
 
-            SendGrid.Email email = new SendGrid.Email();
+            try {
+                SendGrid sendgrid = new SendGrid("OurCroydonAndroid", "TME1921hs");
 
-            email.addTo("our.croydon.test@gmail.com");
-            email.setFrom("our.croydon.test@gmail.com");
-            email.setSubject("Customer feedback - Our Croydon");
-            email.setHtml(message);
+                SendGrid.Email email = new SendGrid.Email();
 
-            sendgrid.send(email);
-        } catch (Exception e) {
-            Log.e("FeedbackFragment", "Failed to send email. Cause: " + e.getMessage());
-            e.printStackTrace();
+                // Get values from edit text to compose email
+                email.addTo("harry@sensemble.com");
+                email.setFrom("harry@sensemble.com");
+                email.setSubject("Customer feedback - Our Croydon");
+                email.setText(mMessageEditText.getText().toString());
+
+                // Send email, execute http request
+                SendGrid.Response response = sendgrid.send(email);
+                String msgResponse = response.getMessage();
+
+                Log.d("SendAppExample", msgResponse);
+
+            } catch (SendGridException | JSONException e) {
+                Log.e("SendAppExample", e.toString());
+            }
+
+            return null;
         }
     }
 
