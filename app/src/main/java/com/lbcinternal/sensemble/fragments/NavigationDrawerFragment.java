@@ -85,9 +85,9 @@ public class NavigationDrawerFragment extends Fragment {
         drawerList.setOnItemClickListener(new OnItemClickListener() {
             @Override public void onItemClick(AdapterView<?> parent, View view,
                                               int position, long id) {
-                if (position <= 3) {
+                if (position <= 4) {
                     selectItem(position);
-                } else if (position == 6) {
+                } else if (position == 7) {
 
                     sp.edit()
                             .putString("action", "logout")
@@ -125,6 +125,9 @@ public class NavigationDrawerFragment extends Fragment {
                 fragment = new IdeasFragment();
                 break;
             case 3:
+                fragment = new PostIdeaFragment();
+                break;
+            case 4:
                 fragment = new FeedbackFragment();
                 break;
         }

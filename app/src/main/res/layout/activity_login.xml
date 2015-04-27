@@ -76,12 +76,11 @@
             android:text="Sign in"
             android:minHeight="56dp"
             android:background="@drawable/login_btn_selector"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="14sp"
+            android:textColor="#e7ffffff"
+            android:textSize="16sp"
             android:onClick="signIn"
             android:textAllCaps="true"
-            android:fontFamily="sans-serif-light"/>
+            android:fontFamily="sans-serif"/>
 
         <FrameLayout
             android:layout_width="match_parent"
