@@ -52,15 +52,16 @@ public class DetailActivity extends ActionBarActivity {
         }
 
         String title = sp.getString("ideaTitle", "");
-        String date = sp.getString("ideaDate", "");
+        final String date = sp.getString("ideaDate", "");
         String body = sp.getString("ideaBody", "");
 
         TextView titleTextView = (TextView) findViewById(R.id.title);
         titleTextView.setText(title);
 
-        TextView dateTextView = (TextView) findViewById(R.id.date);
-        dateTextView.setText(date);
-
+        final TextView dateTextView = (TextView) findViewById(R.id.date);
+        if (!section.equals("ideas")) {
+            dateTextView.setText(date);
+        }
 
         if (!section.equals("ideas")) {
             TextView bodyTextView = (TextView) findViewById(R.id.body);
@@ -75,6 +76,13 @@ public class DetailActivity extends ActionBarActivity {
 
                     TextView scoreTextView = (TextView) findViewById(R.id.rating);
                     scoreTextView.setText(ideaDetails.getRating() + " / 5");
+
+                    if (section.equals("ideas")) {
+                        dateTextView.setText(String.format(
+                                "Idea by %s on %s",
+                                ideaDetails.getAuthor(),
+                                date));
+                    }
                 }
 
                 @Override public void failure(RetrofitError error) {
@@ -84,12 +92,14 @@ public class DetailActivity extends ActionBarActivity {
 
             service = new RestClient(this, "yyyy-MM-dd HH:mm").getApiService();
             service.listComments(id, new Callback<List<Comment>>() {
-                @Override public void success(List<Comment> comments, Response response) {
+                @Override
+                public void success(List<Comment> comments, Response response) {
                     TextView countTextView = (TextView) findViewById(R.id.comments_count);
                     countTextView.setText(comments.size() + "");
                 }
 
-                @Override public void failure(RetrofitError error) {
+                @Override
+                public void failure(RetrofitError error) {
                     error.printStackTrace();
                 }
             });

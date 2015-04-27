@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class IdeaDetails {
 
+    @SerializedName("AuthorName")
+    String mAuthor;
+
     @SerializedName("Title")
     String mTitle;
 
@@ -12,12 +15,6 @@ public class IdeaDetails {
 
     @SerializedName("Rating")
     int mRating;
-
-    public IdeaDetails(String title, String body, int rating) {
-        mTitle = title;
-        mBody = body;
-        mRating = rating;
-    }
 
     public String getTitle() {
         return mTitle;
@@ -29,5 +26,9 @@ public class IdeaDetails {
 
     public int getRating() {
         return mRating;
+    }
+
+    public String getAuthor() {
+        return mAuthor;
     }
 }
