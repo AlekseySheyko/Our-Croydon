@@ -90,6 +90,14 @@ public class MainActivity extends ActionBarActivity {
                 ft.replace(R.id.container, new NewsFragment());
                 break;
         }
+
+        SharedPreferences sharedPrefs =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        if (sharedPrefs.getBoolean("showIdeas", false)) {
+            ft.replace(R.id.container, new IdeasFragment());
+            sharedPrefs.edit().putBoolean("showIdeas", false).apply();
+        }
+
         ft.commit();
 
         sendSessionInfo();

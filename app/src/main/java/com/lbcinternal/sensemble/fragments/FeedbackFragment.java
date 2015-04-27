@@ -43,7 +43,7 @@ public class FeedbackFragment extends Fragment {
                 new SendEmailTask().execute();
 
                 Toast.makeText(getActivity(), "Thanks for your feedback!", Toast.LENGTH_SHORT).show();
-                
+
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });

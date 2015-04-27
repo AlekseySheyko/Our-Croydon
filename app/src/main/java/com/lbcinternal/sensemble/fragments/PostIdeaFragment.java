@@ -2,9 +2,11 @@ package com.lbcinternal.sensemble.fragments;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -128,6 +130,11 @@ public class PostIdeaFragment extends Fragment {
                     }
                 });
                 Toast.makeText(getActivity(), "Thank you for your idea", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences sharedPrefs =
+                        PreferenceManager.getDefaultSharedPreferences(getActivity());
+                sharedPrefs.edit().putBoolean("showIdeas", true).apply();
+
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
