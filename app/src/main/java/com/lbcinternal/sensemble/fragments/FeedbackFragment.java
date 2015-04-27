@@ -51,8 +51,7 @@ public class FeedbackFragment extends Fragment {
     private void sendEmail() throws SendGridException {
         String message = mMessageEditText.getText().toString();
 
-        // TODO: Replace with real API keys
-        SendGrid sendgrid = new SendGrid("api_user", "api_key");
+        SendGrid sendgrid = new SendGrid("OurCroydonAndroid", "TME1921hs");
 
         SendGrid.Email email = new SendGrid.Email();
 
