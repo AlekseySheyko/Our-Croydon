@@ -1,10 +1,9 @@
 package com.lbcinternal.sensemble.rest;
 
-import com.google.gson.JsonObject;
 import com.lbcinternal.sensemble.rest.model.Comment;
 import com.lbcinternal.sensemble.rest.model.Idea;
+import com.lbcinternal.sensemble.rest.model.IdeaCategory;
 import com.lbcinternal.sensemble.rest.model.IdeaDetails;
-import com.lbcinternal.sensemble.rest.model.PostCategory;
 import com.lbcinternal.sensemble.rest.model.User;
 
 import java.util.List;
@@ -56,12 +55,18 @@ public interface ApiService {
             Callback<User> callback);
 
     @GET("/Api/categories") void getPostCategories(
-            Callback<List<PostCategory>> callback);
+            Callback<List<IdeaCategory>> callback);
 
     @FormUrlEncoded
-    @POST("/Api/Posts") void createPost(
+    @POST("/Api/Posts") void postIdea(
             @Field("Title") String title,
             @Field("Content") String body,
-            Callback<JsonObject> callback);
+            @Field("Slug") String slug,
+            @Field("Categories") IdeaCategory category,
+            @Field("Tags") String[] tags,
+            @Field("HasCommentsEnabled") boolean commentsEnabled,
+            @Field("IsPublished") boolean isPublished,
+            @Field("IsAnonymous") boolean isAnonymous,
+            Callback<Idea> callback);
 
 }

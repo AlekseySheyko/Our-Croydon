@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.lbcinternal.sensemble.CircleTransform;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.activities.MainActivity;
+import com.lbcinternal.sensemble.activities.PostIdeaWelcomeActivity;
 import com.lbcinternal.sensemble.activities.WebViewActivity;
 import com.lbcinternal.sensemble.adapters.NavigationDrawerAdapter;
 import com.squareup.okhttp.Interceptor;
@@ -125,6 +126,11 @@ public class NavigationDrawerFragment extends Fragment {
                 fragment = new IdeasFragment();
                 break;
             case 3:
+                SharedPreferences sharedPrefs =
+                        PreferenceManager.getDefaultSharedPreferences(getActivity());
+                if (sharedPrefs.getBoolean("showInstructions", true)) {
+                    startActivity(new Intent(getActivity(), PostIdeaWelcomeActivity.class));
+                }
                 fragment = new PostIdeaFragment();
                 break;
             case 4:

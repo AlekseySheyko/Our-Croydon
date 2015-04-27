@@ -11,16 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.rest.ApiService;
 import com.lbcinternal.sensemble.rest.RestClient;
-import com.lbcinternal.sensemble.rest.model.PostCategory;
+import com.lbcinternal.sensemble.rest.model.Idea;
+import com.lbcinternal.sensemble.rest.model.IdeaCategory;
 import com.lbcinternal.sensemble.views.CategoryPicker;
 
 import java.util.List;
@@ -30,6 +31,10 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class PostIdeaFragment extends Fragment {
+
+    private String LOG_TAG = PostIdeaFragment.class.getSimpleName();
+
+    private List<IdeaCategory> mCategories;
 
     public PostIdeaFragment() {
     }
@@ -44,9 +49,11 @@ public class PostIdeaFragment extends Fragment {
         setDividerColor(picker, getResources().getColor(R.color.picker_divider));
 
         final ApiService service = new RestClient(getActivity()).getApiService();
-        service.getPostCategories(new Callback<List<PostCategory>>() {
+        service.getPostCategories(new Callback<List<IdeaCategory>>() {
             @Override
-            public void success(List<PostCategory> postCategories, Response response) {
+            public void success(List<IdeaCategory> postCategories, Response response) {
+                mCategories = postCategories;
+
                 picker.setMinValue(0);
                 picker.setMaxValue(postCategories.size() - 1);
 
@@ -78,6 +85,8 @@ public class PostIdeaFragment extends Fragment {
             public void onClick(View view) {
                 String title = ((EditText) rootView.findViewById(R.id.title)).getText().toString();
                 String body = ((EditText) rootView.findViewById(R.id.body)).getText().toString();
+                IdeaCategory category = mCategories.get(picker.getValue());
+                boolean isAnonymous = ((CheckBox) rootView.findViewById(R.id.anonymous)).isChecked();
 
                 if (title.isEmpty()) {
                     Toast.makeText(getActivity(), "Please enter a title", Toast.LENGTH_SHORT).show();
@@ -87,15 +96,15 @@ public class PostIdeaFragment extends Fragment {
                     return;
                 }
 
-                service.createPost(title, body, new Callback<JsonObject>() {
+                service.postIdea(title, body, title, category, new String[]{}, true, true, isAnonymous, new Callback<Idea>() {
                     @Override
-                    public void success(JsonObject jsonObject, Response response) {
-
+                    public void success(Idea idea, Response response) {
+                        
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-
+                        error.printStackTrace();
                     }
                 });
                 Toast.makeText(getActivity(), "Thank you for your idea", Toast.LENGTH_SHORT).show();

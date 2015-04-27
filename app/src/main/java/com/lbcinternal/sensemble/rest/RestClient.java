@@ -51,6 +51,7 @@ public class RestClient {
         builder.setRequestInterceptor(new RequestInterceptor() {
             @Override public void intercept(RequestFacade request) {
                 request.addHeader("Cookie", sessionKey);
+                request.addHeader("Content-Type", "application/json");
             }
         });
 

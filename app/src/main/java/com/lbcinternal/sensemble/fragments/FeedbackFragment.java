@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.activities.MainActivity;
 import com.sendgrid.SendGrid;
-import com.sendgrid.SendGridException;
 
 public class FeedbackFragment extends Fragment {
 
@@ -37,10 +36,20 @@ public class FeedbackFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    sendEmail();
-                } catch (SendGridException e) {
-                    Log.e("FeedbackFragment", "Failed to send email. Cause: " + e.getMessage());
+                    SendGrid sendgrid = new SendGrid("api_user", "api_key");
+
+                    SendGrid.Email email = new SendGrid.Email();
+
+                    email.addTo("test@sendgrid.com");
+                    email.setFrom("you@youremail.com");
+                    email.setSubject("Sending with SendGrid is Fun");
+                    email.setHtml("and easy to do anywhere, even with Java");
+
+                    SendGrid.Response response = sendgrid.send(email);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
                 Toast.makeText(getActivity(), "Thanks for your feedback!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -48,22 +57,28 @@ public class FeedbackFragment extends Fragment {
         return rootView;
     }
 
-    private void sendEmail() throws SendGridException {
-        String message = mMessageEditText.getText().toString();
+    private void sendEmail() {
+        try {
+            String message = mMessageEditText.getText().toString();
 
-        SendGrid sendgrid = new SendGrid("OurCroydonAndroid", "TME1921hs");
+            SendGrid sendgrid = new SendGrid("OurCroydonAndroid", "TME1921hs");
 
-        SendGrid.Email email = new SendGrid.Email();
+            SendGrid.Email email = new SendGrid.Email();
 
-        email.addTo("our.croydon.test@gmail.com");
-        email.setFrom("our.croydon.test@gmail.com");
-        email.setSubject("Customer feedback - Our Croydon");
-        email.setHtml(message);
+            email.addTo("our.croydon.test@gmail.com");
+            email.setFrom("our.croydon.test@gmail.com");
+            email.setSubject("Customer feedback - Our Croydon");
+            email.setHtml(message);
 
-        sendgrid.send(email);
+            sendgrid.send(email);
+        } catch (Exception e) {
+            Log.e("FeedbackFragment", "Failed to send email. Cause: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((MainActivity) getActivity())
                 .getSupportActionBar().setTitle("Feedback");

@@ -19,5 +19,6 @@
     <string name="loginScreen">/loginScreen</string>
     <string name="homeScreen">/homeScreen</string>
     <string name="viewPostScreen">/viewPostScreen</string>
+    <string name="title_activity_post_idea_welcome">PostIdeaWelcomeActivity</string>
 
 </resources>

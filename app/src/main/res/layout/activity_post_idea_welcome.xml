@@ -1,0 +1,51 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            tools:context="com.lbcinternal.sensemble.activities.PostIdeaWelcomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/show_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:buttonTint="@color/accent"
+            android:gravity="center_vertical"
+            android:text="Don't show this window again"
+            android:textColor="#c3000000"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:text="Post your Idea!"
+            android:textColor="#574e4b"
+            android:textSize="35sp"/>
+
+        <TextView
+            android:layout_width="225dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Be a part of the changes that need to happen at Croydon\n\nPost an idea that will save money and improve services\n\nSee how many colleagues like your idea or comment\n\nGet involved in other ideas-vote or make a suggestion\n\nUse comments to improve your idea or add to it"
+            android:textSize="17sp"/>
+
+    </LinearLayout>
+
+</ScrollView>
