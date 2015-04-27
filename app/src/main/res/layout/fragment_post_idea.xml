@@ -5,55 +5,68 @@
               android:orientation="vertical">
 
     <EditText
-        android:id="@+id/titleField"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:textSize="20sp"
-        android:hint="Give your idea a title"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:textCursorDrawable="@null"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:hint="Give your idea a title"
+        android:maxLength="70"
         android:textColor="@android:color/black"
-        android:textColorHint="@android:color/darker_gray"/>
+        android:textColorHint="@android:color/darker_gray"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#ecf0f1"
+        android:layout_height="160dp"
         android:layout_marginLeft="11dp"
-        android:layout_marginRight="11dp"/>
+        android:layout_marginRight="11dp"
+        android:background="#ecf0f1"/>
 
-    <EditText android:layout_width="match_parent"
-              android:layout_height="0dp"
-              android:layout_weight="1"
-              android:layout_marginTop="@dimen/activity_vertical_margin"
-              android:layout_marginBottom="@dimen/activity_vertical_margin"
-              android:layout_marginLeft="12dp"
-              android:layout_marginRight="12dp"
-              android:paddingTop="12dp"
-              android:paddingBottom="12dp"
-              android:hint="Write a message..."
-              android:imeOptions="actionSend"
-              android:id="@+id/message"
-              android:ellipsize="end"
-              android:gravity="top"
-              android:textColor="@android:color/black"
-              android:textColorHint="@android:color/darker_gray"
-              android:inputType="textNoSuggestions|textCapSentences|textMultiLine"
-              android:textCursorDrawable="@null"/>
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="top"
+        android:hint="Description"
+        android:imeOptions="actionSend"
+        android:inputType="textNoSuggestions|textCapSentences|textMultiLine"
+        android:maxLength="1000"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:textCursorDrawable="@null"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Post anonymously"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:buttonTint="@color/accent"
+        android:textColor="#d3000000"
+        android:textSize="16sp"/>
 
     <Button
         android:id="@+id/submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Post"
-        android:minHeight="56dp"
         android:background="@drawable/login_btn_selector"
-        android:textColor="#e7ffffff"
-        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:minHeight="56dp"
+        android:text="Post"
         android:textAllCaps="true"
-        android:fontFamily="sans-serif"/>
+        android:textColor="#e7ffffff"
+        android:textSize="16sp"/>
 
 </LinearLayout>
