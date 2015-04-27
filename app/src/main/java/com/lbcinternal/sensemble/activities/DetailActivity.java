@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -73,6 +74,7 @@ public class DetailActivity extends ActionBarActivity {
                 @Override public void success(IdeaDetails ideaDetails, Response response) {
                     TextView bodyTextView = (TextView) findViewById(R.id.body);
                     bodyTextView.setText(ideaDetails.getBody());
+                    Log.d("DetailActivity", "Idea body: " + ideaDetails.getBody());
 
                     TextView scoreTextView = (TextView) findViewById(R.id.rating);
                     scoreTextView.setText(ideaDetails.getRating() + " / 5");

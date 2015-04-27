@@ -14,7 +14,7 @@ public class IdeaDetails {
     String mBody;
 
     @SerializedName("Rating")
-    int mRating;
+    float mRating;
 
     public String getTitle() {
         return mTitle;
@@ -25,7 +25,7 @@ public class IdeaDetails {
     }
 
     public int getRating() {
-        return mRating;
+        return Math.round(mRating);
     }
 
     public String getAuthor() {
