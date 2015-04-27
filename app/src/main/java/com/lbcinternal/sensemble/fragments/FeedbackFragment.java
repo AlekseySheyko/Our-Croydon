@@ -55,8 +55,8 @@ public class FeedbackFragment extends Fragment {
 
         SendGrid.Email email = new SendGrid.Email();
 
-        email.addTo("harry@sensemble.com");
-        email.setFrom("harry@sensemble.com");
+        email.addTo("our.croydon.test@gmail.com");
+        email.setFrom("our.croydon.test@gmail.com");
         email.setSubject("Customer feedback - Our Croydon");
         email.setHtml(message);
 

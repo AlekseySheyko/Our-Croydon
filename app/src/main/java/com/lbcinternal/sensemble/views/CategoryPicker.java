@@ -34,7 +34,7 @@ public class CategoryPicker extends NumberPicker {
     private void updateView(View view) {
         if (view instanceof EditText) {
             ((EditText) view).setTextSize(20);
-            ((EditText) view).setTextColor(Color.parseColor("#515f1f"));
+            ((EditText) view).setTextColor(Color.parseColor("#247500"));
         }
     }
 }

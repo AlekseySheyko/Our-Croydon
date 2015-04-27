@@ -1,13 +1,21 @@
 package com.lbcinternal.sensemble.fragments;
 
 
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.lbcinternal.sensemble.R;
 import com.lbcinternal.sensemble.activities.MainActivity;
 import com.lbcinternal.sensemble.rest.ApiService;
@@ -32,11 +40,13 @@ public class PostIdeaFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_post_idea,
                 container, false);
 
-        ApiService service = new RestClient(getActivity()).getApiService();
+        final CategoryPicker picker = (CategoryPicker) rootView.findViewById(R.id.picker);
+        setDividerColor(picker, getResources().getColor(R.color.picker_divider));
+
+        final ApiService service = new RestClient(getActivity()).getApiService();
         service.getPostCategories(new Callback<List<PostCategory>>() {
             @Override
             public void success(List<PostCategory> postCategories, Response response) {
-                CategoryPicker picker = (CategoryPicker) rootView.findViewById(R.id.picker);
                 picker.setMinValue(0);
                 picker.setMaxValue(postCategories.size() - 1);
 
@@ -62,11 +72,62 @@ public class PostIdeaFragment extends Fragment {
             }
         });
 
+        Button submitButton = (Button) rootView.findViewById(R.id.submit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String title = ((EditText) rootView.findViewById(R.id.title)).getText().toString();
+                String body = ((EditText) rootView.findViewById(R.id.body)).getText().toString();
 
+                if (title.isEmpty()) {
+                    Toast.makeText(getActivity(), "Please enter a title", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (body.isEmpty()) {
+                    Toast.makeText(getActivity(), "Please enter your idea", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                service.createPost(title, body, new Callback<JsonObject>() {
+                    @Override
+                    public void success(JsonObject jsonObject, Response response) {
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                    }
+                });
+                Toast.makeText(getActivity(), "Thank you for your idea", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        });
 
 
 
         return rootView;
+    }
+
+    private void setDividerColor(NumberPicker picker, int color) {
+
+        java.lang.reflect.Field[] pickerFields = NumberPicker.class.getDeclaredFields();
+        for (java.lang.reflect.Field pf : pickerFields) {
+            if (pf.getName().equals("mSelectionDivider")) {
+                pf.setAccessible(true);
+                try {
+                    ColorDrawable colorDrawable = new ColorDrawable(color);
+                    pf.set(picker, colorDrawable);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                } catch (Resources.NotFoundException e) {
+                    e.printStackTrace();
+                }
+                catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
     }
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {

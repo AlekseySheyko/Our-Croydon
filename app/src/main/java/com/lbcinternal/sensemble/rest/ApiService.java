@@ -1,5 +1,6 @@
 package com.lbcinternal.sensemble.rest;
 
+import com.google.gson.JsonObject;
 import com.lbcinternal.sensemble.rest.model.Comment;
 import com.lbcinternal.sensemble.rest.model.Idea;
 import com.lbcinternal.sensemble.rest.model.IdeaDetails;
@@ -56,5 +57,11 @@ public interface ApiService {
 
     @GET("/Api/categories") void getPostCategories(
             Callback<List<PostCategory>> callback);
+
+    @FormUrlEncoded
+    @POST("/Api/Posts") void createPost(
+            @Field("Title") String title,
+            @Field("Content") String body,
+            Callback<JsonObject> callback);
 
 }

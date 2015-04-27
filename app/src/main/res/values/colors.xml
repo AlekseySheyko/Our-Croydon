@@ -3,6 +3,7 @@
 
     <color name="primary">#37b501</color>
     <color name="primary_dark">#2c9000</color>
+    <color name="picker_divider">#6c34ac00</color>
     <color name="accent">#00C853</color>
     <color name="tab_indicator">#ff0068</color>
     <color name="background">@android:color/white</color>
