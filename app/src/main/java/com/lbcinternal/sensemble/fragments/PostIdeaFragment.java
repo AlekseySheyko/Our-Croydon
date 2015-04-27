@@ -43,7 +43,15 @@ public class PostIdeaFragment extends Fragment {
                 String[] categories = new String[postCategories.size()];
                 for (int i = 0; i < postCategories.size(); i++) {
                     categories[i] = postCategories.get(i).getName();
+
+                    if (postCategories.get(i).isChecked()) {
+                        picker.setValue(i);
+                    }
                 }
+                if (picker.getValue() == 0) {
+                    picker.setValue(1);
+                }
+
                 picker.setDisplayedValues(categories);
                 picker.setWrapSelectorWheel(false);
             }

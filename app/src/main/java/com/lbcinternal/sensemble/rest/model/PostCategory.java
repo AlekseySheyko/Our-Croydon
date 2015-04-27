@@ -11,7 +11,7 @@ public class PostCategory {
     String mName;
 
     @SerializedName("IsChecked")
-    String mIsChecked;
+    boolean mIsChecked;
 
     public String getId() {
         return mId;
@@ -21,7 +21,7 @@ public class PostCategory {
         return mName;
     }
 
-    public String isChecked() {
+    public boolean isChecked() {
         return mIsChecked;
     }
 }
