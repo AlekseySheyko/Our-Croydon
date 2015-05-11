@@ -62,7 +62,7 @@ public class FeedbackFragment extends Fragment {
                 SendGrid.Email email = new SendGrid.Email();
 
                 // Get values from edit text to compose email
-                email.addTo("harry@sensemble.com");
+                email.addTo(new String[] {"internal.communications@croydon.gov.uk", "harry@sensemble.com"});
                 email.setFrom("harry@sensemble.com");
                 email.setSubject("Customer feedback - Our Croydon");
                 email.setText(mMessageEditText.getText().toString());
