@@ -17,6 +17,8 @@
 package com.lbcinternal.sensemble;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Logger;
@@ -48,5 +50,10 @@ public class CroydonApp extends Application {
             mTrackers.put(trackerId, t);
         }
         return mTrackers.get(trackerId);
+    }
+
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

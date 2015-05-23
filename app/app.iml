@@ -95,6 +95,7 @@
     <orderEntry type="library" exported="" name="play-services-gcm-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
+    <orderEntry type="library" exported="" name="notification-hubs-0.4" level="project" />
     <orderEntry type="library" exported="" name="multidex-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-cast-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="azure-mobile-services-android-sdk-2.0-beta" level="project" />
@@ -115,10 +116,10 @@
     <orderEntry type="library" exported="" name="play-services-analytics-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.1.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-appinvite-7.3.0" level="project" />
-    <orderEntry type="library" exported="" name="okhttp-2.3.0" level="project" />
     <orderEntry type="library" exported="" name="azure-notifications-handler-1.0.1" level="project" />
-    <orderEntry type="library" exported="" name="gson-2.3.1" level="project" />
+    <orderEntry type="library" exported="" name="okhttp-2.3.0" level="project" />
     <orderEntry type="library" exported="" name="httpmime-4.3.4" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.3.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.1.1" level="project" />
     <orderEntry type="library" exported="" name="floatingactionbutton-1.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-7.3.0" level="project" />
