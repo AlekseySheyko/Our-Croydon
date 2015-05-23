@@ -81,6 +81,7 @@ public class LoginActivity extends Activity {
 
     public void signIn(View view) {
         String username = ((EditText) findViewById(R.id.usernameField)).getText().toString();
+        username = username.trim();
         if (username.isEmpty()) {
             Toast.makeText(this, "Please enter your username", Toast.LENGTH_SHORT).show();
             return;
@@ -93,6 +94,7 @@ public class LoginActivity extends Activity {
             email = username;
         }
         String password = ((EditText) findViewById(R.id.passwordField)).getText().toString();
+        password = password.trim();
         if (password.isEmpty()) {
             Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
             return;
