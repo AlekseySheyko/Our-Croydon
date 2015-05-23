@@ -9,7 +9,6 @@ import com.google.gson.GsonBuilder;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
-import retrofit.RestAdapter.LogLevel;
 import retrofit.converter.GsonConverter;
 
 public class RestClient {
@@ -33,7 +32,6 @@ public class RestClient {
     private void buildRestClient(String dateFormat) {
 
         RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setLogLevel(LogLevel.FULL)
                 .setEndpoint(BASE_URL);
 
 
