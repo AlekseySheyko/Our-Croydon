@@ -46,8 +46,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MyHandler.mainActivity = this;
-        NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
+        PushHandler.mActivity = this;
+        NotificationsManager.handleNotifications(this, SENDER_ID, PushHandler.class);
         gcm = GoogleCloudMessaging.getInstance(this);
         hub = new NotificationHub(HubName, HubListenConnectionString, this);
         registerWithNotificationHubs();

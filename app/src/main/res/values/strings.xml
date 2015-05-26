@@ -20,5 +20,6 @@
     <string name="homeScreen">/homeScreen</string>
     <string name="viewPostScreen">/viewPostScreen</string>
     <string name="title_activity_post_idea_welcome">PostIdeaWelcomeActivity</string>
+    <string name="notification_title">Our Croydon notification</string>
 
 </resources>
